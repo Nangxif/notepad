@@ -6,6 +6,8 @@ import Index from '@/components/index';
 import Find from '@/components/find';
 import Personal from '@/components/personal/personal';
 import Friend from '@/components/personal/friend/friend';
+import Setting from '@/components/personal/setting/setting';
+import Nickname from '@/components/personal/setting/nickname/nickname';
 import Create from '@/components/create/create';
 
 
@@ -39,6 +41,13 @@ export default new Router({
         children:[{
             path: '/personal/friend',
             component: Friend
+        },{
+            path: '/personal/setting',
+            component: Setting,
+            children:[{
+                path: '/personal/setting/nickname',
+                component: Nickname
+            }]
         }]
     }
   ],

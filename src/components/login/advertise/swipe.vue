@@ -2,8 +2,8 @@
 	<div class="swiper">
 		<div class="swiper-container">
 		    <div class="swiper-wrapper">
-		        <div class="swiper-slide"><span>第一步</span></div>
-		        <div class="swiper-slide"><span>第二步</span></div>
+		        <div class="swiper-slide"><span>第一步:打开APP</span></div>
+		        <div class="swiper-slide"><span>第二步：点击第二步</span></div>
 		        <div class="swiper-slide">
 		        	<span>开始</span>
 					<a class="start" @click="changeSwiper()">开启手账</a>

@@ -5,7 +5,7 @@
         <router-link to="/index" class="close">&times;</router-link>
         <p class="login_title">开启生活手账</p>
         <input type="number" name="tel" class="login-input" placeholder="输入手机号" />
-        <router-link class="login-title-btn" to="/login/password">下一步</router-link>
+        <router-link class="login-title-btn" to="/login/password">获取验证码</router-link>
         <router-view></router-view>
     </div>
   </div>
@@ -53,7 +53,7 @@ export default {
 .login-wrapper .login_title{
     margin-left: 10%;
     margin-top: 24%;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-family: "微软雅黑","黑体";
 }
 
@@ -61,9 +61,9 @@ export default {
     display: block;
     margin: 0 auto;
     margin-top: 22%;
-    padding: 0px 15px;
+    padding: 0px 0.5rem;
     width: 70%;
-    height: 40px;
+    height: 2.5rem;
     border: 0px;
     border-bottom: 1px solid #d6d6d6;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
@@ -76,15 +76,13 @@ export default {
     margin-top: 10%;
     width: 70%;
     text-align: center;
-    height: 40px;
-    line-height: 40px;
-    font-size: 20px;
-    background-color: #dddddd;
-    border-radius: 20px;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1rem;
+    background-color: #fed640;
+    border-radius: 1.25rem;
     text-decoration: none;
-    color: black;
-    -webkit-tap-highlight-color:rgba(0,0,0,0);
-    user-select: none;
+    color: white;
 }
 
 </style>

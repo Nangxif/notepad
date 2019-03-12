@@ -6,10 +6,10 @@
             <div class="personal_avatar">
                 <img src="./avatar.jpg"/>
             </div>
-            <div class="personal_name">
+            <router-link class="personal_name" to="/personal/setting">
                 <p class="personal_name_wrapper">曩昔</p>
                 <a class="personal_tel">手机号:15521223592<span class="personal_tel_icon"><i class="icon iconfont icon-erweima1688"></i>   <i class="icon iconfont icon-arrowright"></i></span></a>
-            </div>
+            </router-link>
 
             
         </div>
@@ -41,9 +41,8 @@
         </div>
     </div>
     <foot-top></foot-top>
-    <transition name="router-show">
-        <router-view></router-view>
-    </transition>
+    <router-view></router-view>
+
 
   </div>
 </template>
@@ -98,6 +97,7 @@ export default {
         margin-top: 1.2rem;
         margin-left: 1rem;
         height: 4.2rem;
+        color: black;
     }
     .personal_name .personal_name_wrapper{
         height: 3rem;
@@ -157,10 +157,5 @@ export default {
 
 
 
-    .router-show-enter-active,.router-show-leave-active{
-        transition: all .4s;
-    }
-    .router-show-enter,.router-show-leave-active{
-        transform:translateX(100%)
-    }
+
 </style>

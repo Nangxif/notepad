@@ -2,84 +2,124 @@
   <div class="friend">
     <head-top :is-back="isBack" page-title="我的好友"></head-top>
     <div class="friend_wrapper">
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">添加新朋友</div>
-            </router-link>
+        <div class="friend_roll">
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <div><i class="icon iconfont icon-tianjiahaoyou"></i></div>
+                    </div>
+                    <div class="friend_item_nickname">添加新朋友</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="A">A</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="B">B</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="C">C</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="E">E</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="G">G</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="H">H</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="I">I</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="J">J</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <a class="friend_list_a" name="L">L</a>
+            <div class="friend_list">
+                <router-link class="friend_item" to="">
+                    <div class="friend_item_avatar">
+                        <img src="../avatar.jpg"/>
+                    </div>
+                    <div class="friend_item_nickname">nangxi</div>
+                </router-link>
+            </div>
+            <p class="friend_list_end">无更多好友，快去添加吧！</p>
         </div>
-        <a class="friend_list_a" name="A">A</a>
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-        </div>
-        <a class="friend_list_a" name="B">B</a>
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-        </div>
-        <a class="friend_list_a" name="C">C</a>
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-        </div>
-        <a class="friend_list_a" name="E">E</a>
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-        </div>
-        <a class="friend_list_a" name="G">G</a>
-        <div class="friend_list">
-            <router-link class="friend_item" to="">
-                <div class="friend_item_avatar">
-                    <img src="../avatar.jpg"/>
-                </div>
-                <div class="friend_item_nickname">nangxi</div>
-            </router-link>
-        </div>
-        <p class="friend_list_end">无更多好友，快去添加吧！</p>
+        
     </div>  
     <div class="friend_index">
         <div class="friend_index_wrapper">
-            <a v-for="item in index"  @touchstart="navigation(item)">{{item}}</a>
+            <a v-for="item in index"  @touchstart="navigation(item)" @touchend="isSelectedIndex">{{item}}</a>
         </div>
     </div>
+    <div class="friend_index_tip" v-if="isSelected">{{selectedIndex}}</div>
   </div>
 </template>
 
@@ -89,7 +129,9 @@ export default {
 	data(){
 		return{
 			"isBack":true,
-            "index":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
+            "index":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"],
+            "selectedIndex": "A",
+            "isSelected": false
 		}
 	},
     components:{
@@ -97,10 +139,16 @@ export default {
     },
     methods:{
         navigation(point){
-            console.log(point)
-            $(".friend_list_a[name='"+point+"']").animate({
-                'scrollTop': 0
-            }, 200);
+            this.selectedIndex = point;
+            this.isSelected = true;
+            if($(".friend_list_a[name='"+point+"']").length>0){    
+                $(".friend_wrapper").animate({
+                    'scrollTop': $(".friend_list_a[name='"+point+"']").position().top
+                }, 200);
+            }
+        },
+        isSelectedIndex(){
+            this.isSelected = false;
         }
     }
 }
@@ -117,6 +165,9 @@ export default {
         background-color: white;
         overflow-x: hidden;
         overflow-y: auto;
+    }
+    .friend_roll{
+        position: relative;
     }
     .friend_list_a{
         display: block;
@@ -153,10 +204,25 @@ export default {
     .friend_item .friend_item_avatar{
         flex: 0 0 2.2rem;
     }
+    .friend_item_avatar div{
+        margin-top: 1.1rem;
+        width: 2rem;
+        text-align: center;
+        height: 2rem;
+        line-height: 2rem;
+        border-radius: 0.5rem;
+        background-color: #fed640;
+    }
+    .friend_item_avatar i{
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: white;
+    }
     .friend_item .friend_item_avatar img{
         margin-top: 1.1rem;
         width: 2rem;
         height: 2rem;
+        border-radius: 0.5rem;
     }
     .friend_item_nickname{
         padding-left: 1.2rem;
@@ -187,5 +253,22 @@ export default {
         color: #585858;
         font-size: 0.6rem;
         user-select: none;
+    }
+
+    .friend_index_tip{
+        margin: auto;
+        position: fixed;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
+        width: 4.2rem;
+        text-align: center;
+        height: 4.2rem;
+        line-height: 4.2rem;
+        font-size: 2rem;
+        border-radius: 1rem;
+        background-color: rgba(0,0,0,0.3);
+        color: white;
     }
 </style>

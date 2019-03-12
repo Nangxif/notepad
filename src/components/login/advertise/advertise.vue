@@ -23,7 +23,7 @@ export default {
     data(){
     	return{
     		is_advert:false,
-    		time:3,
+    		time:5,
     		isShowSwiper:true
     	}
     },
@@ -72,8 +72,8 @@ export default {
 	height: 100%;
 	background-image: url('./advertise.png');
 	background-repeat: no-repeat;
-	background-size: 100%;
-	animation:advertisement_bg_move 3s linear;
+	background-size: 100% 100%;
+	animation:advertisement_bg_move 5s linear;
 	animation-fill-mode: forwards;
 	-webkit-animation-fill-mode: forwards;
 	transform: scale(1);
