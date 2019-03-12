@@ -1,0 +1,166 @@
+<template>
+  <div class="personal">
+    <head-top :is-back="isBack" page-title="个人中心"></head-top>
+    <div class="personal_wrapper">
+        <div class="personal_top">
+            <div class="personal_avatar">
+                <img src="./avatar.jpg"/>
+            </div>
+            <div class="personal_name">
+                <p class="personal_name_wrapper">曩昔</p>
+                <a class="personal_tel">手机号:15521223592<span class="personal_tel_icon"><i class="icon iconfont icon-erweima1688"></i>   <i class="icon iconfont icon-arrowright"></i></span></a>
+            </div>
+
+            
+        </div>
+        <div class="personal_list">
+            <div class="personal_item">
+                <div class="personal_item_icon">
+                    <i class="icon iconfont icon-tongxunlu"></i>
+                </div>
+                <router-link class="personal_item_tip" to="/personal/friend">我的好友<i class="icon iconfont icon-arrowright"></i></router-link>
+            </div>
+            <div class="personal_item">
+                <div class="personal_item_icon">
+                    <i class="icon iconfont icon-comments"></i>
+                </div>
+                <div class="personal_item_tip">我的手账<i class="icon iconfont icon-arrowright"></i></div>
+            </div>
+            <div class="personal_item">
+                <div class="personal_item_icon">
+                    <i class="icon iconfont icon-favorite"></i>
+                </div>  
+                <div class="personal_item_tip">收藏<i class="icon iconfont icon-arrowright"></i></div>
+            </div>
+            <div class="personal_item">
+                <div class="personal_item_icon">
+                    <i class="icon iconfont icon-set"></i>
+                </div>  
+                <div class="personal_item_tip">设置<i class="icon iconfont icon-arrowright"></i></div>
+            </div>
+        </div>
+    </div>
+    <foot-top></foot-top>
+    <transition name="router-show">
+        <router-view></router-view>
+    </transition>
+
+  </div>
+</template>
+
+<script>
+import headTop from '@/components/common/head';
+import footTop from '@/components/common/foot';
+export default {
+    data(){
+        return{
+            "isBack": false
+        }
+    },
+    components:{
+        headTop,
+        footTop
+    }
+}
+</script>
+
+<style>
+    .personal_wrapper{
+        position: fixed;
+        left: 0px;
+        top: 3.031rem;
+        bottom: 3.26rem;
+        width: 100%;
+        height: calc(100% - 6.291rem);
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .personal_top{
+        display: flex;
+        height: 6.6rem;
+        background-color: white;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .personal_avatar{
+        flex: 0 0 3rem;
+        height: 6.6rem; 
+    }
+    .personal_avatar img{
+        margin-top: 1.2rem;
+        margin-left: 1.2rem;
+        width: 4.2rem;
+        height: 4.2rem;
+        border-radius: 0.6rem;
+        border: none;
+    }
+    .personal_name{
+        flex: 1;
+        margin-top: 1.2rem;
+        margin-left: 1rem;
+        height: 4.2rem;
+    }
+    .personal_name .personal_name_wrapper{
+        height: 3rem;
+        line-height: 2rem;
+        font-size: 1.4rem;
+        font-weight: 700;
+    }
+    .personal_name .personal_tel{
+        height: 1.2rem;
+        font-size: 0.8rem;
+        color: #aba9a9;
+        vertical-align: top;
+    }
+    .personal_name .personal_tel .personal_tel_icon{
+        float: right;
+        margin-right: 1.2rem;
+    }
+    .personal_name .personal_tel .personal_tel_icon i{
+        font-size: 0.8rem !important;
+    }
+    .personal_list{
+        margin-top: 1rem; 
+        border-top: 1px solid #eeeeee;
+        border-bottom: 1px solid #eeeeee;
+    }
+    .personal_item{
+        display: flex;
+        height: 3.2rem;        
+        line-height: 3.2rem;
+        font-size: 1rem;
+        background-color: white;
+        color: #aba9a9;
+    }
+    .personal_item .personal_item_icon{
+        flex: 0 0 2rem;
+        padding-left: 1rem;
+        height: 3.2rem;
+        line-height: 3.2rem;
+    }
+    .personal_item .personal_item_icon i{
+        font-size: 1.2rem;
+    }
+    .personal_item .personal_item_tip{
+        flex: 1;
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+        border-bottom: 1px solid #eeeeee;
+        color: #aba9a9;
+    }
+    .personal_item:last-child .personal_item_tip{
+        border-bottom:none;
+    }
+    .personal_item .personal_item_tip i{
+        float: right;
+    }
+
+
+
+
+    .router-show-enter-active,.router-show-leave-active{
+        transition: all .4s;
+    }
+    .router-show-enter,.router-show-leave-active{
+        transform:translateX(100%)
+    }
+</style>
