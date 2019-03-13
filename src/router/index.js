@@ -7,6 +7,7 @@ import Find from '@/components/find';
 import Personal from '@/components/personal/personal';
 import Friend from '@/components/personal/friend/friend';
 import Setting from '@/components/personal/setting/setting';
+import Avatar from '@/components/personal/setting/avatar/avatar';
 import Nickname from '@/components/personal/setting/nickname/nickname';
 import Code from '@/components/personal/setting/code/code';
 import Create from '@/components/create/create';
@@ -20,36 +21,39 @@ export default new Router({
         path: '/',
         component: Login,
         children:[{
-            path: '/login/password',
+            path: '/login/password',//密码界面
             component: Password
         }]
     },
     {
-        path: '/index',
+        path: '/index',//首页界面
         component: Index
     },
     {
-        path: '/find',
+        path: '/find',//发现界面
         component: Find
     },
     {
-        path: '/create',
+        path: '/create',//新建手账界面
         component: Create
     },
     {
-        path: '/personal',
+        path: '/personal',//个人中心界面
         component: Personal,
         children:[{
-            path: '/personal/friend',
+            path: '/personal/friend',//我的好友界面
             component: Friend
         },{
-            path: '/personal/setting',
+            path: '/personal/setting',//设置界面
             component: Setting,
             children:[{
-                path: '/personal/setting/nickname',
+                path: '/personal/setting/avatar',//头像设置修改界面
+                component: Avatar
+            },{
+                path: '/personal/setting/nickname',//昵称设置修改界面
                 component: Nickname
             },{
-                path: '/personal/setting/code',
+                path: '/personal/setting/code',//二维码查看下载界面
                 component: Code
             }]
         }]

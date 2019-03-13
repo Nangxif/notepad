@@ -51,12 +51,13 @@ export default {
         position: fixed;
         left: 0px;
         top: 3.031rem;
-        bottom: 3.26rem;
+/*        bottom: 3.26rem;*/
         width: 100%;
-        height: calc(100% - 6.291rem);
+        height: calc(100% - 3.031rem);
         background-color: white;
         overflow-x: hidden;
         overflow-y: auto;
+        z-index: 501;
     }
     .nickname_wrapper input{
         display: block;

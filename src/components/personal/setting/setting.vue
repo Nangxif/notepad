@@ -3,7 +3,7 @@
     <head-top :is-back="isBack" page-title="个人信息"></head-top>
     <div class="setting_wrapper">
         <div class="setting_list">
-            <div class="setting_item">
+            <router-link class="setting_item" to="/personal/setting/avatar">
                 <div class="setting_title">
                     头像
                 </div>
@@ -11,7 +11,7 @@
                     <img src="../avatar.jpg"/>
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
-            </div>
+            </router-link>
             <router-link class="setting_item" to="/personal/setting/nickname">
                 <div class="setting_title">
                     昵称

@@ -165,6 +165,7 @@ export default {
         background-color: white;
         overflow-x: hidden;
         overflow-y: auto;
+        z-index: 501;
     }
     .friend_roll{
         position: relative;
@@ -238,6 +239,7 @@ export default {
         right: 0px;
         width: 30px;
         height: 100%;
+        z-index: 502;
     }
     .friend_index_wrapper{
         position: fixed;
@@ -270,5 +272,6 @@ export default {
         border-radius: 1rem;
         background-color: rgba(0,0,0,0.3);
         color: white;
+        z-index: 503;
     }
 </style>

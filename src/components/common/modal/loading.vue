@@ -30,7 +30,8 @@ export default {
         left: 0px;
         right: 0px;
         top: 3.031rem;
-        bottom: 3.26rem;
+        /*bottom: 3.26rem;*/
+        bottom: 0px;
         background-color: rgba(0,0,0,0);
         z-index: 998;
     }
