@@ -30,14 +30,14 @@
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
             </div>
-            <div class="setting_item">
+            <router-link class="setting_item" to="/personal/setting/code">
                 <div class="setting_title">
                     二维码名片
                 </div>
                 <div class="setting_content">
                     <i class="icon iconfont icon-erweima1688"></i>   <i class="icon iconfont icon-arrowright"></i>
                 </div>
-            </div>
+            </router-link>
         </div>
     </div>
     <router-view></router-view>

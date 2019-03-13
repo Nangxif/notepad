@@ -18,9 +18,7 @@ export default {
 </script>
 
 <style>
-	*{
-		margin: 0px;
-	}
+	@import "./assets/common.css";
 	.router-fade-enter-active, .router-fade-leave-active {
 	  	transition: opacity .2s;
 	}

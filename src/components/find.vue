@@ -31,26 +31,31 @@
         </div>
     </div>
     <foot-top></foot-top>
+    <loading v-if="isLoading"></loading>
   </div>
 </template>
 
 <script>
 import headTop from '@/components/common/head';
 import footTop from '@/components/common/foot';
+import loading from '@/components/common/modal/loading.vue';
 export default {
     data(){
         return{
             showwz:[],
-            wznum:''
+            wznum:'',
+            isLoading:false
         }
     },
     components:{
         headTop,
-        footTop
+        footTop,
+        loading
     },
     methods:{
         getwz:function(){
             var that = this;
+            this.isLoading = true;
             $.ajax({
                 url:"http://xxiaoyuan.top/controller/wz/wz.php",
                 type:"POST",
@@ -62,6 +67,7 @@ export default {
                     console.log(res);
                     that.showwz = res.data;
                     that.wznum = res.data.length;
+                    that.isLoading = false;
                 }
             });
         }

@@ -4,21 +4,44 @@
     <div class="nickname_wrapper">
         <input type="text"/>
         <p>好名字可以让你的朋友更容易记住你</p>
-        <a href="javascript:history.back();">保存</a>
+        <a @click="save">保存</a>
     </div>
+    <success :openModal="openModal" :text="text" v-if="isModal" @closeModal="closeModal"></success>
   </div>
 </template>
 
 <script>
 import headTop from '@/components/common/head';
+import success from '@/components/common/modal/success.vue';
 export default {
     data(){
         return{
-            "isBack": true
+            "isBack": true,
+            "openModal": false,
+            "isModal": false,
+            "timer": {},
+            "text": "保存成功"
         }
     },
     components:{
-        headTop
+        headTop,
+        success
+    },
+    methods:{
+        save(){
+            // 此处进行保存操作
+            this.isModal = true;
+            this.openModal = true;
+
+        },
+        closeModal(){
+            this.openModal = false;
+            this.timer=setTimeout(()=>{
+                clearTimeout(this.timer);
+                this.isModal=false;
+                history.back();
+            },1000);
+        }
     }
 }
 </script>

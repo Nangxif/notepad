@@ -49,6 +49,7 @@ export default {
 		background-color: #fcfcfc;
 	    border-top: 1px solid #d4d4d4;
 	    display: flex;
+	    z-index: 999;
 	}
 	.footer_wrapper .active{
 		color: #fed640 !important;

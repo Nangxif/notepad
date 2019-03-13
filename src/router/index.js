@@ -8,6 +8,7 @@ import Personal from '@/components/personal/personal';
 import Friend from '@/components/personal/friend/friend';
 import Setting from '@/components/personal/setting/setting';
 import Nickname from '@/components/personal/setting/nickname/nickname';
+import Code from '@/components/personal/setting/code/code';
 import Create from '@/components/create/create';
 
 
@@ -47,6 +48,9 @@ export default new Router({
             children:[{
                 path: '/personal/setting/nickname',
                 component: Nickname
+            },{
+                path: '/personal/setting/code',
+                component: Code
             }]
         }]
     }

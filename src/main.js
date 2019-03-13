@@ -5,8 +5,11 @@ import App from './App'
 import router from './router'
 import FastClick from 'fastclick'
 import $ from 'jquery'
+import vcolorpicker from 'vcolorpicker'
 import './assets/swiper.min.css';
 
+// 在此注册颜色插件，在component里面注册的话，则是以组件的方式注册
+Vue.use(vcolorpicker)
 
 
 if ('addEventListener' in document) {
