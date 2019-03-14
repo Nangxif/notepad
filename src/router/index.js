@@ -9,7 +9,10 @@ import Friend from '@/components/personal/friend/friend';
 import Setting from '@/components/personal/setting/setting';
 import Avatar from '@/components/personal/setting/avatar/avatar';
 import Nickname from '@/components/personal/setting/nickname/nickname';
+import Tel from '@/components/personal/setting/tel/tel';
 import Code from '@/components/personal/setting/code/code';
+import Note from '@/components/personal/note/note';
+import System from '@/components/personal/system/system';
 import Create from '@/components/create/create';
 
 
@@ -53,9 +56,18 @@ export default new Router({
                 path: '/personal/setting/nickname',//昵称设置修改界面
                 component: Nickname
             },{
+                path:'/personal/setting/tel',//修改手机号界面
+                component: Tel
+            },{
                 path: '/personal/setting/code',//二维码查看下载界面
                 component: Code
             }]
+        },{
+            path: '/personal/note',//我的手账界面
+            component: Note
+        },{
+            path: '/personal/system',//我的手账界面
+            component: System
         }]
     }
   ],

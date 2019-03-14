@@ -3,17 +3,19 @@
     <head-top :is-back="isBack" page-title="头像"></head-top>
     <div class="avatar_wrapper">
         <!-- 图片预览插件 -->
-        <vue-preview :slides="slide1" @close="handleClose"></vue-preview>
-        <a class="avatar_wrapper_btn">更改图片</a>
+        <vue-preview :slides="slide" @close="handleClose"></vue-preview>
+        <a class="avatar_wrapper_btn" @click="showCroppa">更改图片</a>
         <a class="avatar_wrapper_btn" @click="save">保存</a>
     </div>
     <success :openModal="openModal" :text="text" v-if="isModal" @closeModal="closeModal"></success>
+    <croppa v-if="isCroppa" @croppaEmit="croppaEmit"></croppa>
   </div>
 </template>
 
 <script>
 import headTop from '@/components/common/head';
 import success from '@/components/common/modal/success.vue';
+import croppa from './croppa/croppa';
 export default {
     data(){
         return{
@@ -22,7 +24,7 @@ export default {
             "isModal": false,
             "timer": {},
             "text": "更改成功",
-            slide1: [
+            slide: [
               {
                 src: 'http://192.168.24.146:8080/static/img/avatar.0d5a53f.jpg',
                 msrc: 'http://192.168.24.146:8080/static/img/avatar.0d5a53f.jpg',
@@ -31,14 +33,25 @@ export default {
                 w: 600,
                 h: 600
               }
-            ]
+            ],
+            isCroppa:false,
         }
     },
     components:{
         headTop,
-        success
+        success,
+        croppa
     },
     methods:{
+        showCroppa(){
+            this.isCroppa = true;
+        },
+        croppaEmit(e){
+            console.log(e);
+            this.isCroppa = e.isCroppa;
+            this.slide[0].src = e.avatar_URL;
+            this.slide[0].msrc = e.avatar_URL;
+        },
         save(){
             // 此处进行保存操作
             this.isModal = true;

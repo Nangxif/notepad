@@ -10,7 +10,7 @@
 				<p>发现</p>
 			</router-link>
 			<router-link to="/create" active-class="active">
-				<span class="icon iconfont icon-comments"></span>
+				<span class="icon iconfont icon-text"></span>
 				<p>写手账</p>
 			</router-link>
 			<router-link to="/personal" active-class="active">

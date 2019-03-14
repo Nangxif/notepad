@@ -68,7 +68,7 @@ export default {
         height: 2.5rem;
         border: 0px;
         border-bottom: 1px solid #fed640;
-        font-size: 1.125rem;
+        font-size: 1rem;
         outline: none;
     }
     .nickname_wrapper p{

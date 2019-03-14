@@ -67,7 +67,7 @@ export default {
     border: 0px;
     border-bottom: 1px solid #d6d6d6;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    font-size: 18px;
+    font-size: 1rem;
     outline: none;
 }
 .login-wrapper .login-title-btn{

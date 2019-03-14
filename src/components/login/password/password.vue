@@ -62,7 +62,7 @@ export default {
     border: 0px;
     border-bottom: 1px solid #d6d6d6;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    font-size: 1.125rem;
+    font-size: 1rem;
     outline: none;
 }
 .password-wrapper .password-title-btn{

@@ -21,7 +21,7 @@
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
             </router-link>
-            <div class="setting_item">
+            <router-link class="setting_item" to="/personal/setting/tel">
                 <div class="setting_title">
                     手机号
                 </div>
@@ -29,7 +29,7 @@
                     15521223592
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
-            </div>
+            </router-link>
             <router-link class="setting_item" to="/personal/setting/code">
                 <div class="setting_title">
                     二维码名片

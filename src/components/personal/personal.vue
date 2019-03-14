@@ -24,7 +24,7 @@
                 <div class="personal_item_icon">
                     <i class="icon iconfont icon-comments"></i>
                 </div>
-                <div class="personal_item_tip">我的手账<i class="icon iconfont icon-arrowright"></i></div>
+                <router-link class="personal_item_tip" to="/personal/note">我的手账<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
             <div class="personal_item">
                 <div class="personal_item_icon">
@@ -36,7 +36,7 @@
                 <div class="personal_item_icon">
                     <i class="icon iconfont icon-set"></i>
                 </div>  
-                <div class="personal_item_tip">设置<i class="icon iconfont icon-arrowright"></i></div>
+                <router-link class="personal_item_tip" to="/personal/system">设置<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
         </div>
     </div>

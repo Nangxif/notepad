@@ -1,22 +1,20 @@
 <template>
-  <div class="tel">
-    <head-top :is-back="isBack" page-title="修改手机号"></head-top>
-    <div class="tel_wrapper">
-        <input type="text" placeholder="更改手机号" class="tel_num"/>
-        <div class="tel_btn_group">
-            <input type="text" placeholder="验证码" />
-            <a class="get_num">获取验证码</a>
-        </div>
-        
-        <a @click="save" class="tel_save">更改</a>
+  <div class="croppa">
+    <div class="croppa_wrapper"> 
+        <croppa v-model="myCroppa"
+        :width="299"
+        :height="299"
+        :canvas-color="'#e6e6e6'"
+        :placeholder="'请选择更改的图片'"
+        :placeholder-font-size="16"
+        :placeholder-color="'default'"
+        :accept="'image/*'"></croppa>
+        <a @click="save" class="croppa_save">更改</a>
     </div>
-    <success :openModal="openModal" :text="text" v-if="isModal" @closeModal="closeModal"></success>
   </div>
 </template>
 
 <script>
-import headTop from '@/components/common/head';
-import success from '@/components/common/modal/success.vue';
 export default {
     data(){
         return{
@@ -24,46 +22,53 @@ export default {
             "openModal": false,
             "isModal": false,
             "timer": {},
-            "text": "更改成功"
+            "text": "更改成功",
+            myCroppa: {}
         }
     },
     components:{
-        headTop,
-        success
     },
     methods:{
         save(){
             // 此处进行保存操作
-            this.isModal = true;
-            this.openModal = true;
-
+            console.log(this.myCroppa.generateDataUrl());
+            this.$emit('croppaEmit',{isCroppa:false,avatar_URL:this.myCroppa.generateDataUrl()});
         },
         closeModal(){
             this.openModal = false;
             this.timer=setTimeout(()=>{
                 clearTimeout(this.timer);
                 this.isModal=false;
-                history.back();
             },1000);
-        }
+        },
     }
 }
 </script>
 
 <style>
-    .tel_wrapper{
+    .croppa{
+        margin: auto;
         position: fixed;
         left: 0px;
+        right: 0px;
         top: 3.031rem;
-/*        bottom: 3.26rem;*/
-        width: 100%;
+        /*bottom: 3.26rem;*/
+        bottom: 0rem;
+        background-color: rgba(0,0,0,0.4);
+        z-index: 502;
+    }
+    .croppa_wrapper{
+        margin: auto;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 0px;
+        bottom: 0px;
         height: calc(100% - 3.031rem);
         background-color: white;
-        overflow-x: hidden;
-        overflow-y: auto;
         z-index: 501;
     }
-    .tel_wrapper .tel_num{
+    .croppa_wrapper .croppa_num{
         display: block;
         margin: 0 auto;
         margin-top: 1rem;
@@ -72,27 +77,27 @@ export default {
         height: 2.5rem;
         border: 0px;
         border-bottom: 1px solid #fed640;
-        font-size: 1rem;
+        font-size: 1.125rem;
         outline: none;
     }
-    .tel_btn_group{
+    .croppa_btn_group{
         display: flex;
         margin: 0 auto;
         margin-top: 1rem;
         width: 90%;
-        height: 2.5rem;    
+        height: 2.5rem;
     }
-    .tel_btn_group input{
+    .croppa_btn_group input{
         flex: 1;
         padding: 0px 0.5rem;
         height: 2.5rem;
         border: 0px;
         border-bottom: 1px solid #fed640;
-        font-size: 1rem;
+        font-size: 1.125rem;
         outline: none;
     }
-    .tel_btn_group a{
-        flex: 0 0 5.5rem;
+    .croppa_btn_group a{
+        flex: 0 0 6rem;
         text-align: center;
         height: 2.5rem;
         line-height: 2.5rem;
@@ -100,7 +105,7 @@ export default {
         color: white;
         background-color: #fed640;
     }
-    .tel_wrapper .tel_save{
+    .croppa_wrapper .croppa_save{
         display: block;
         margin: 0 auto;
         margin-top: 1rem;
