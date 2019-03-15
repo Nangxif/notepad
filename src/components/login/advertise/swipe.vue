@@ -2,10 +2,20 @@
 	<div class="swiper">
 		<div class="swiper-container">
 		    <div class="swiper-wrapper">
-		        <div class="swiper-slide"><span>第一步:打开APP</span></div>
-		        <div class="swiper-slide"><span>第二步：点击第二步</span></div>
 		        <div class="swiper-slide">
-		        	<span>开始</span>
+					<div class="swiper_center">
+						<img src="../../../../static/logo_white.png"/><span>Bespoke notepad</span>
+					</div>
+		        </div>
+		        <div class="swiper-slide">
+					<div class="swiper_center">
+						<img src="../../../../static/logo_white.png"/><span>Remember good dates</span>
+					</div>
+		        </div>
+		        <div class="swiper-slide">
+		        	<div class="swiper_center">
+						<img src="../../../../static/logo_white.png"/><span>开始</span>
+					</div>
 					<a class="start" @click="changeSwiper()">开启手账</a>
 		        </div>
 		    </div>
@@ -21,7 +31,6 @@ export default {
 	name: 'swiper',
 	data () {
 		return {
-			msg: 'Welcome to Your Vue.js App'
 		}
 	},
 	mounted(){
@@ -60,6 +69,16 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-wrap: wrap;
+}
+.swiper_center{
+	text-align: center;
+}
+.swiper-slide img{
+	margin: 0 auto;
+	display: block;
+	width: 12rem;
+	height: auto;
 }
 .swiper-slide span{
 	font-size: 30px;

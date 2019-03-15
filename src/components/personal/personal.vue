@@ -22,15 +22,21 @@
             </div>
             <div class="personal_item">
                 <div class="personal_item_icon">
-                    <i class="icon iconfont icon-comments"></i>
+                    <i class="icon iconfont icon-text"></i>
                 </div>
                 <router-link class="personal_item_tip" to="/personal/note">我的手账<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
             <div class="personal_item">
                 <div class="personal_item_icon">
+                    <i class="icon iconfont icon-riqi"></i>
+                </div>
+                <router-link class="personal_item_tip" to="/personal/note">记下的日子<i class="icon iconfont icon-arrowright"></i></router-link>
+            </div>
+            <div class="personal_item">
+                <div class="personal_item_icon">
                     <i class="icon iconfont icon-favorite"></i>
                 </div>  
-                <div class="personal_item_tip">收藏<i class="icon iconfont icon-arrowright"></i></div>
+                <router-link class="personal_item_tip" to="/personal/save">收藏<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
             <div class="personal_item">
                 <div class="personal_item_icon">

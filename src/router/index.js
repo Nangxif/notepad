@@ -12,8 +12,10 @@ import Nickname from '@/components/personal/setting/nickname/nickname';
 import Tel from '@/components/personal/setting/tel/tel';
 import Code from '@/components/personal/setting/code/code';
 import Note from '@/components/personal/note/note';
+import Save from '@/components/personal/save/save';
 import System from '@/components/personal/system/system';
-import Create from '@/components/create/create';
+import Func from '@/components/function/function';
+import EditDate from '@/components/function/editDate/editDate';
 
 
 Vue.use(Router)
@@ -37,8 +39,12 @@ export default new Router({
         component: Find
     },
     {
-        path: '/create',//新建手账界面
-        component: Create
+        path: '/function',//新建手账界面
+        component: Func,
+        children:[{
+            path: '/function/editDate',//记日子界面
+            component: EditDate
+        }]
     },
     {
         path: '/personal',//个人中心界面
@@ -65,6 +71,9 @@ export default new Router({
         },{
             path: '/personal/note',//我的手账界面
             component: Note
+        },{
+            path: '/personal/save',//我的收藏界面
+            component: Save
         },{
             path: '/personal/system',//我的手账界面
             component: System

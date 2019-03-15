@@ -9,6 +9,7 @@ import $ from 'jquery'
 import vcolorpicker from 'vcolorpicker';//颜色拾取
 import VuePreview from 'vue-preview';//图片预览
 import Croppa from 'vue-croppa';//图片裁剪
+import Calendar from 'vue-mobile-calendar'//日期插件
 import 'vue-croppa/dist/vue-croppa.css';
 import './assets/swiper.min.css';
 
@@ -26,6 +27,8 @@ Vue.use(vcolorpicker)
 Vue.use(VuePreview)
 // 注册裁剪插件
 Vue.use(Croppa);
+// 注册日期插件
+Vue.use(Calendar)
 
 if ('addEventListener' in document) {
 	document.addEventListener('DOMContentLoaded', function() {
