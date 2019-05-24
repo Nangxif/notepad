@@ -12,6 +12,9 @@ import Croppa from 'vue-croppa';//图片裁剪
 import Calendar from 'vue-mobile-calendar'//日期插件
 import 'vue-croppa/dist/vue-croppa.css';
 import './assets/swiper.min.css';
+import $cookies from 'vue-cookies';//cookie插件
+
+
 
 
 // 手指触摸事件注册
@@ -29,6 +32,8 @@ Vue.use(VuePreview)
 Vue.use(Croppa);
 // 注册日期插件
 Vue.use(Calendar)
+// 注册日期插件
+Vue.use($cookies)
 
 if ('addEventListener' in document) {
 	document.addEventListener('DOMContentLoaded', function() {

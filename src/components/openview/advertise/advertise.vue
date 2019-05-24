@@ -34,6 +34,7 @@ export default {
     	// 判断是否关闭广告页
     	changeStatus(){
     		this.is_advert = false;
+    		this.$router.push({path:"/login"})
     	},
     	//倒计时
     	count(){
@@ -42,6 +43,7 @@ export default {
     			if(this.time==0){
     				clearInterval(timeInterval);
     				this.is_advert = false;
+    				this.$router.push({path:"/login"})
     			}
     		},1000)
     	},

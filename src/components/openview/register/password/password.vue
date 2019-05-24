@@ -3,23 +3,50 @@
     <div class="password-wrapper">
         <router-link to="/index" class="close">&times;</router-link>
         <p class="password_title">开启生活手账</p>
-        <input type="password" name="password" class="password-input" placeholder="设置密码" />
-        <input type="number" name="number" class="password-input" placeholder="输入验证码" />
-        <router-link class="password-title-btn" to="/index">下一步</router-link>
+        <input type="password" name="password" class="password-input" placeholder="设置密码"  v-model="password"/>
+        <input type="number" name="number" class="password-input" placeholder="输入验证码" v-model="code"/>
+        <!-- <router-link class="password-title-btn" to="/index">下一步</router-link> -->
+        <button type="button" class="password-title-btn" @click="registe">下一步</button>
     </div>
   </div>
 </template>
 
 <script>
+import {register,login} from '../../../../assets/api.js';
 export default {
-  name: 'password'
+  name: 'password',
+  data(){
+    return{
+        password:'',
+        code:''
+    }
+  },
+  methods:{
+    registe(){
+        let _target = this;
+        register({ 
+            tel:_target.$route.query.tel,
+            password: _target.password,
+            code: _target.code,
+        }).then((res)=>{
+            console.log(res);
+            if(res.data.code == 1){
+                login({
+                    tel:_target.$route.query.tel,
+                    password: _target.password
+                })
+            }
+        });
+        
+    }
+  }
 }
 </script>
 
 <style>
 #password{
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 .password-wrapper{
     position: fixed;

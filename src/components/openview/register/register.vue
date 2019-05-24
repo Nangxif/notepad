@@ -1,32 +1,38 @@
 <template>
-  <div id="login">
-    <advertise></advertise>
-    <div class="login-wrapper">
-        <router-link to="/index" class="close">&times;</router-link>
-        <p class="login_title">开启生活手账</p>
-        <input type="number" name="tel" class="login-input" placeholder="输入手机号" />
-        <router-link class="login-title-btn" to="/login/password">获取验证码</router-link>
+  <div id="register">
+    <div class="register-wrapper">
+        <router-link to="/login" class="close">&times;</router-link>
+        <p class="register_title">开启生活手账</p>
+        <input type="number" name="tel" class="register-input" placeholder="输入手机号" v-model="tel"/>
+        <button type="button" class="register-title-btn" @click="getCode">获取验证码</button>
+        <!-- <router-link class="register-title-btn" to="/register/password">获取验证码</router-link> -->
         <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
-import advertise from './advertise/advertise';
 export default {
-  name: 'Login',
-  components:{
-    advertise
+  name: 'register',
+  data(){
+    return {
+        tel:""
+    }
+  },
+  methods:{
+    getCode(){
+        this.$router.push({path:"/register/password?tel="+this.tel})
+    }
   }
 }
 </script>
 
 <style>
-#login{
+#register{
   width: 100%;
   height: 100%;
 }
-.login-wrapper{
+.register-wrapper{
     position: fixed;
     left: 0px;
     top: 0px;
@@ -36,7 +42,7 @@ export default {
     z-index: 1;
 }
 
-.login-wrapper .close{
+.register-wrapper .close{
     position: fixed;
     right: 5px;
     top: 5px;
@@ -50,14 +56,14 @@ export default {
     text-decoration: none;
     color: black;
 }
-.login-wrapper .login_title{
+.register-wrapper .register_title{
     margin-left: 10%;
     margin-top: 24%;
     font-size: 1.25rem;
     font-family: "微软雅黑","黑体";
 }
 
-.login-wrapper .login-input{
+.register-wrapper .register-input{
     display: block;
     margin: 0 auto;
     margin-top: 22%;
@@ -70,7 +76,7 @@ export default {
     font-size: 1rem;
     outline: none;
 }
-.login-wrapper .login-title-btn{
+.register-wrapper .register-title-btn{
     display: block;
     margin: 0 auto;
     margin-top: 10%;

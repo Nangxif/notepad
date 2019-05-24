@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/login/login';
-import Password from '@/components/login/password/password';
+import Advertise from '@/components/openview/advertise/advertise';
+import Login from '@/components/openview/login/login';
+import Register from '@/components/openview/register/register';
+import Password from '@/components/openview/register/password/password';
 import Index from '@/components/index';
 import Find from '@/components/find';
 import Personal from '@/components/personal/personal';
@@ -20,13 +22,27 @@ import EditDate from '@/components/function/editDate/editDate';
 
 Vue.use(Router)
 
-export default new Router({
+
+
+const router = new Router({
   routes: [
     {
         path: '/',
-        component: Login,
+        redirect: '/advertise'//默认重定向到广告页面
+    },
+    {
+        path: '/advertise',
+        component: Advertise//广告页面
+    },
+    {
+        path: '/login',
+        component: Login//注册页面
+    },
+    {
+        path: '/register',
+        component: Register,
         children:[{
-            path: '/login/password',//密码界面
+            path: '/register/password',//密码界面
             component: Password
         }]
     },
@@ -84,31 +100,31 @@ export default new Router({
 })
 
 
+router.beforeEach((to, from, next) => {
+    // console.log(to.path);
+    // next();
+    // 如果不判断进来的界面是否为/login 的话，会出现死循环Maximum call stack size exceeded
+    if (!$cookies.get("userId")&&(to.path!=='/login'||to.path!=='/register')) {
+        next({
+            path: '/login'
+        })
+    }else{
+        if($cookies.get("userId")&&(to.path=='/login'||to.path=='/register')){
+            if(to.path=='/login'){
+                next({
+                    path: '/login'
+                })
+            }else{
+                next({
+                    path: '/register'
+                })
+            }
+        }else{
+            next();
+        }
+    }
+})
+
+export default router;
 
 
-
-// export default new Router({ 
-//   routes: [  
-//     { 
-//       path: '/play',  
-//       name: 'play',  
-//       component: Play,  
-//       children: [  
-//         {  
-//           path: '/play/home',  
-//           name: 'home',  
-//           component: Home,
-//           children:[{
-//           	path:'/play/home/time',
-//           	name:'time',
-//           	component:Time
-//           }]  
-//         },  
-//         {  
-//           path: '/play/about',  
-//           name: 'about',  
-//           component: About  
-//         }   
-//       ]  
-//     }]
-// }) 
