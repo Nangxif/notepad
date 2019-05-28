@@ -1,14 +1,10 @@
 <template>
-  <div class="tel">
-    <head-top :is-back="isBack" page-title="修改手机号"></head-top>
-    <div class="tel_wrapper">
-        <input type="text" placeholder="更改手机号" class="tel_num" v-model="tel"/>
-        <div class="tel_btn_group">
-            <input type="text" placeholder="验证码" />
-            <a class="get_num">获取验证码</a>
-        </div>
-        
-        <a @click="save" class="tel_save">更改</a>
+  <div class="nickname">
+    <head-top :is-back="isBack" page-title="修改地址"></head-top>
+    <div class="nickname_wrapper">
+        <input type="text" v-model="address"/>
+        <p>一个准确的地址方便好友相聚</p>
+        <a @click="save">保存</a>
     </div>
     <success :openModal="openModal" :text="text" v-if="isModal" @closeModal="closeModal"></success>
   </div>
@@ -16,8 +12,8 @@
 
 <script>
 import headTop from '@/components/common/head';
-import success from '@/components/common/modal/success.vue';
-import { settingData,updateTel } from '../../../../assets/api.js';
+import success from '@/components/common/modal/success';
+import { settingData,updateAddress } from '../../../../assets/api.js';
 export default {
     data(){
         return{
@@ -25,8 +21,8 @@ export default {
             "openModal": false,
             "isModal": false,
             "timer": {},
-            "text": "更改成功",
-            tel:""
+            "text": "保存成功",
+            address:""
         }
     },
     components:{
@@ -36,14 +32,14 @@ export default {
     mounted(){
         let _this = this; 
         settingData().then((res) => {
-            _this.tel = res.data.data.tel;
+            _this.address = res.data.data.address;
         });
     },
     methods:{
         save(){
             // 此处进行保存操作
             let _this = this;
-            updateTel(_this.tel==""?"未设置":_this.tel).then((res) => {
+            updateAddress(_this.address==""?"未设置":_this.address).then((res) => {
                 if(res.data.code==1){
                     this.isModal = true;
                     this.openModal = true;
@@ -63,7 +59,7 @@ export default {
 </script>
 
 <style>
-    .tel_wrapper{
+    .nickname_wrapper{
         position: fixed;
         left: 0px;
         top: 3.031rem;
@@ -75,7 +71,7 @@ export default {
         overflow-y: auto;
         z-index: 501;
     }
-    .tel_wrapper .tel_num{
+    .nickname_wrapper input{
         display: block;
         margin: 0 auto;
         margin-top: 1rem;
@@ -87,32 +83,14 @@ export default {
         font-size: 1rem;
         outline: none;
     }
-    .tel_btn_group{
-        display: flex;
+    .nickname_wrapper p{
         margin: 0 auto;
-        margin-top: 1rem;
         width: 90%;
-        height: 2.5rem;    
-    }
-    .tel_btn_group input{
-        flex: 1;
-        padding: 0px 0.5rem;
-        height: 2.5rem;
-        border: 0px;
-        border-bottom: 1px solid #fed640;
-        font-size: 1rem;
-        outline: none;
-    }
-    .tel_btn_group a{
-        flex: 0 0 5.5rem;
-        text-align: center;
-        height: 2.5rem;
-        line-height: 2.5rem;
+        margin-top: 0.5rem;
         font-size: 0.8rem;
-        color: white;
-        background-color: #fed640;
+        color: #d6d6d6;
     }
-    .tel_wrapper .tel_save{
+    .nickname_wrapper a{
         display: block;
         margin: 0 auto;
         margin-top: 1rem;

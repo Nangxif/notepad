@@ -72,9 +72,9 @@ export default {
 	top: 0px;
 	width: 100%;
 	height: 100%;
-	background-image: url('./advertise.png');
+	background-image: url('./advertise.jpg');
 	background-repeat: no-repeat;
-	background-size: 100% 100%;
+	background-size: 100%;
 	animation:advertisement_bg_move 5s linear;
 	animation-fill-mode: forwards;
 	-webkit-animation-fill-mode: forwards;
@@ -119,8 +119,8 @@ export default {
 	height: 26px;
 	line-height: 26px;
 	text-align: center;
-	color: white;
-	background-color: rgba(255,255,255,0.5);
+	color: #eeeeee;
+	background-color: rgba(255,255,255,0.7);
 	border-radius: 5px;
 	z-index: 3;
 }

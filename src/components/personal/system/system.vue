@@ -4,7 +4,7 @@
     <div class="system_wrapper">
         <div class="system_list">
             <div class="system_item">
-                <div class="system_item_tip">关于notepad<i class="icon iconfont icon-arrowright"></i></div>
+                <router-link to="/personal/system/about" class="system_item_tip">关于notepad<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
             <div class="system_item">
                 <div class="system_item_tip">更换广告<i class="icon iconfont icon-arrowright"></i></div>
@@ -31,6 +31,11 @@ export default {
     },
     components:{
         headTop
+    },
+    methods:{
+        exit(){
+            
+        }
     }
 }
 </script>

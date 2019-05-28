@@ -7,8 +7,8 @@
                 <img src="./avatar.jpg"/>
             </div>
             <router-link class="personal_name" to="/personal/setting">
-                <p class="personal_name_wrapper">曩昔</p>
-                <a class="personal_tel">手机号:15521223592<span class="personal_tel_icon"><i class="icon iconfont icon-erweima1688"></i>   <i class="icon iconfont icon-arrowright"></i></span></a>
+                <p class="personal_name_wrapper">{{userName}}</p>
+                <a class="personal_tel">手机号:{{tel}}<span class="personal_tel_icon"><i class="icon iconfont icon-erweima1688"></i>   <i class="icon iconfont icon-arrowright"></i></span></a>
             </router-link>
 
             
@@ -30,7 +30,7 @@
                 <div class="personal_item_icon">
                     <i class="icon iconfont icon-riqi"></i>
                 </div>
-                <router-link class="personal_item_tip" to="/personal/note">记下的日子<i class="icon iconfont icon-arrowright"></i></router-link>
+                <router-link class="personal_item_tip" to="/personal/date">记下的日子<i class="icon iconfont icon-arrowright"></i></router-link>
             </div>
             <div class="personal_item">
                 <div class="personal_item_icon">
@@ -56,16 +56,27 @@
 <script>
 import headTop from '@/components/common/head';
 import footTop from '@/components/common/foot';
+import {settingData} from '../../assets/api.js';
 export default {
     data(){
         return{
-            "isBack": false
+            "isBack": false,
+            userName:"",
+            tel:""
         }
+    },
+    mounted(){
+        let _this = this; 
+        settingData().then((res) => {
+            this.userName = res.data.data.userName;
+            this.tel = res.data.data.tel;
+        });
     },
     components:{
         headTop,
         footTop
     }
+
 }
 </script>
 

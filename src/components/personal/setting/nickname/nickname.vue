@@ -2,7 +2,7 @@
   <div class="nickname">
     <head-top :is-back="isBack" page-title="修改昵称"></head-top>
     <div class="nickname_wrapper">
-        <input type="text"/>
+        <input type="text" v-model="username"/>
         <p>好名字可以让你的朋友更容易记住你</p>
         <a @click="save">保存</a>
     </div>
@@ -12,7 +12,8 @@
 
 <script>
 import headTop from '@/components/common/head';
-import success from '@/components/common/modal/success.vue';
+import success from '@/components/common/modal/success';
+import { settingData,updateuserName } from '../../../../assets/api.js';
 export default {
     data(){
         return{
@@ -20,23 +21,34 @@ export default {
             "openModal": false,
             "isModal": false,
             "timer": {},
-            "text": "保存成功"
+            "text": "保存成功",
+            username:""
         }
     },
     components:{
         headTop,
         success
     },
+    mounted(){
+        let _this = this; 
+        settingData().then((res) => {
+            _this.username = res.data.data.userName;
+        });
+    },
     methods:{
         save(){
             // 此处进行保存操作
-            this.isModal = true;
-            this.openModal = true;
-
+            let _this = this;
+            updateuserName(_this.username==""?"未设置":_this.username).then((res) => {
+                if(res.data.code==1){
+                    this.isModal = true;
+                    this.openModal = true;
+                }
+            })
         },
         closeModal(){
             this.openModal = false;
-            this.timer=setTimeout(()=>{
+            this.timer = setTimeout(() => {
                 clearTimeout(this.timer);
                 this.isModal=false;
                 history.back();

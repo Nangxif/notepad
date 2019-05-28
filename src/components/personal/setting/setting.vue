@@ -17,7 +17,16 @@
                     昵称
                 </div>
                 <div class="setting_content">
-                    曩昔
+                    {{userName}}
+                    <i class="icon iconfont icon-arrowright"></i>
+                </div>
+            </router-link>
+            <router-link class="setting_item" to="/personal/setting/sex">
+                <div class="setting_title">
+                    性别
+                </div>
+                <div class="setting_content">
+                    {{sex}}
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
             </router-link>
@@ -26,7 +35,16 @@
                     手机号
                 </div>
                 <div class="setting_content">
-                    15521223592
+                    {{tel}}
+                    <i class="icon iconfont icon-arrowright"></i>
+                </div>
+            </router-link>
+            <router-link class="setting_item" to="/personal/setting/address">
+                <div class="setting_title">
+                    地址
+                </div>
+                <div class="setting_content">
+                    {{address}}
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
             </router-link>
@@ -46,15 +64,34 @@
 
 <script>
 import headTop from '@/components/common/head';
+import {settingData} from '../../../assets/api.js';
 export default {
     name: 'setting',
     data(){
     	return{
-    		"isBack": true
+    		"isBack": true,
+            userName:"",
+            sex:"",
+            tel:"",
+            address:""
     	}
     },
     components:{
 		headTop
+    },
+    mounted(){
+        let _this = this; 
+        settingData().then((res) => {
+            console.log(res)
+            this.userName = res.data.data.userName;
+            if(res.data.data.sex == "未设置"){
+                this.sex = res.data.data.sex;  
+            }else{
+                this.sex = res.data.data.sex == "男"?"♂":"♀";
+            }
+            this.tel = res.data.data.tel;
+            this.address = res.data.data.address;
+        });
     }
 }
 </script>

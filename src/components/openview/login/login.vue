@@ -2,9 +2,10 @@
   <div id="login">
     <div class="login-wrapper">
         <p class="login_title">开启生活手账</p>
-        <input type="number" name="tel" class="login-input" placeholder="输入手机号" />
-        <input type="password" name="password" class="login-input" placeholder="输入密码" />
-        <router-link class="login-title-btn" to="/login/password">登录</router-link>
+        <input type="number" name="tel" class="login-input" placeholder="输入手机号" v-model="tel"/>
+        <input type="password" name="password" class="login-input" placeholder="输入密码" v-model="password"/>
+        <button type="button" class="login-title-btn" @click="loginin">登录</button>
+        <!-- <router-link class="login-title-btn" to="/login/password">登录</router-link> -->
         <router-link class="login-title-btn" to="/register">未注册？点此注册</router-link>
         <!-- <router-view></router-view> 子路由的话一定要用到router-view-->
     </div>
@@ -12,8 +13,28 @@
 </template>
 
 <script>
+import {login} from '../../../assets/api.js';
 export default {
-  name: 'Login'
+  name: 'Login',
+  data(){
+    return{
+        tel:'',
+        password:''
+    }
+  },
+  methods:{
+    loginin(){
+        let _target = this;
+        login({ 
+            tel:_target.tel,
+            password: _target.password
+        }).then((res)=>{
+            if(res.data.code == 1){
+                 _target.$router.push({path:"/index"});
+            }
+        });
+    }
+  }
 }
 </script>
 

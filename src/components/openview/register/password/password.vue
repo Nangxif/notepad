@@ -29,11 +29,12 @@ export default {
             password: _target.password,
             code: _target.code,
         }).then((res)=>{
-            console.log(res);
             if(res.data.code == 1){
                 login({
                     tel:_target.$route.query.tel,
                     password: _target.password
+                }).then((login) => {
+                    _target.$router.push({path:"/index"});
                 })
             }
         });

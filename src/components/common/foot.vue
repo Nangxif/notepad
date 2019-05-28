@@ -76,7 +76,7 @@ export default {
 		top: 2rem;
 		width: 100%;
 		text-align: center;
-		font-size: 0.2rem;
+		font-size: .6rem;
 	}
 
 </style>

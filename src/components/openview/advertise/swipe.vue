@@ -35,7 +35,7 @@ export default {
 	},
 	mounted(){
 		new Swiper ('.swiper-container', {
-			loop: true,
+			loop: false,
 			// 如果需要分页器
 			pagination: {
 				el: '.swiper-pagination',

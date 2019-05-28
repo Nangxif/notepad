@@ -59,7 +59,7 @@ export default {
         height: 18rem;
         /*line-height: 6rem;*/
         border-radius: .5rem;
-        background-color: #fed640;
+        background-color: transparent;
         color: white;
     }
     .function_item i{

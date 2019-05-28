@@ -2,9 +2,9 @@
   <div class="editDate">
     <head-top :is-back="isBack" page-title="记日子"></head-top>
     <div class="editDate_wrapper">
-    	<input type="text" name="day_name" class="day_name" placeholder="事件名称" />
+    	<input type="text" name="day_name" class="day_name" placeholder="事件名称" v-model="dateTitle"/>
     	<a @click="selectDate" class="date_select">{{indelibility}}</a>
-    	<textarea class="remark">备注</textarea>
+    	<textarea class="remark" v-model="dateContent"></textarea>
     	<a @click="selectLevel" class="level_select"><span :style="{'background-color': selectColor}">{{level}}</span></a>
     	<a @click="create_Date" class="editDate_create">创建</a>
         <calendar
@@ -42,12 +42,15 @@
 
 <script>
 import headTop from '@/components/common/head';
+import {addDate} from '../../../assets/api.js';
 export default {
     data(){
         return{
             "isBack": true,
+            dateTitle:'事件名称',
             indelibility: new Date().getFullYear()+"年"+(new Date().getMonth()+1)+"月"+new Date().getDate()+"日",
             level: "重要",//初始事件等级
+            dateContent:"备注",
             calendarShow: false,
 			defaultDate: new Date(),//初始默认时间
 			selectColor: "#ef7676",//事件等级初始颜色
@@ -105,11 +108,27 @@ export default {
     		console.log(data);
     	},
     	create_Date(){
-    		$(".create_modal").fadeIn();
-    		$(".create_wrapper").addClass("create_wrapper_bg_"+this.selectIndex);
+            addDate({
+                dateTitle:this.dateTitle,
+                date:this.indelibility,
+                dateContent:this.dateContent,
+                dateLevel:this.level,
+                dateLevelDesc:this.levelBtn[this.selectIndex].desc,
+                createTime:new Date()
+            }).then((addresult)=>{
+                if(addresult.data.code==1){
+                    $(".create_modal").fadeIn();
+                    $(".create_wrapper").addClass("create_wrapper_bg_"+this.selectIndex);
+                }
+            })
     	},
     	closeCreate(){
-    		$(".create_modal").fadeOut();
+            let that = this;
+    		$(".create_modal").fadeOut(function(){
+                that.$router.replace({
+                    path:'/personal/date'
+                })
+            });
     	}
     }
 }
