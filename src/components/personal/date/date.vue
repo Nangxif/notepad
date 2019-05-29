@@ -3,23 +3,25 @@
     <head-top :is-back="isBack" page-title="记下的日子"></head-top>
     <div class="date_wrapper">
         <div class="date_list">
-            <p class="date_list_date">2019年3月14日</p>
             <div class="date_item_wrapper" v-for="(item,index) in date_data">
+                <p class="date_list_date" v-if="index==0||dataArr[index]!=dataArr[index==0?0:(index-1)]">{{item.date.substring(0,item.date.indexOf('月')+1)}}</p>
                 <v-touch v-on:swipeleft="moveItemToLeft(item._id)" v-on:swiperight="moveItemToRight(item._id)" :swipe-options="{direction: 'horizontal'}" >
                     <div class="date_item" :ref="item._id">
-                        <div class="date_content">
+                        <router-link class="date_content" :to="'/personal/date/datedetail?_id='+item._id">
                             <div class="date_item_title">{{item.dateTitle}}</div>
+                            <div class="date_item_date">发生时间：{{item.date}}</div>
                             <div class="date_item_desc">{{item.dateContent}}</div>
-                            <p class="date_item_time">{{new Date(item.createTime).getFullYear()}}年{{new Date(item.createTime).getMonth()+1}}月{{new Date(item.createTime).getDate()}}  {{new Date(item.createTime).getHours()}}:{{new Date(item.createTime).getMinutes()}}:{{new Date(item.createTime).getSeconds()}}</p>
-                        </div>
+                            <p class="date_item_time">创建时间：{{new Date(item.createTime).getFullYear()}}年{{new Date(item.createTime).getMonth()+1}}月{{new Date(item.createTime).getDate()}}  {{new Date(item.createTime).getHours()}}:{{new Date(item.createTime).getMinutes()}}:{{new Date(item.createTime).getSeconds()}}    等级：{{item.dateLevel}}</p>
+                        </router-link>
                         <div class="date_delete">
-                            <a @click="deleteItem(index,item._id)"><i class="icon iconfont icon-weibiaoti6"></i></a>
+                            <a @click.stop="deleteItem(index,item._id)"><i class="icon iconfont icon-weibiaoti6"></i></a>
                         </div>
                     </div>
                 </v-touch>
             </div>
         </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -30,7 +32,8 @@ export default {
     data(){
         return{
             "isBack": true,
-            date_data:[]
+            date_data: [],
+            dataArr: []
         }
     },
     mounted(){
@@ -38,6 +41,9 @@ export default {
             console.log(dates);
             if(dates.data.code == 1){
                this.date_data =  dates.data.data;
+               for(let i = 0;i<dates.data.data.length;i++){
+                    this.dataArr.push(dates.data.data[i].date.substring(0,dates.data.data[i].date.indexOf('月')+1));
+               }
             }
         })
     },
@@ -93,9 +99,11 @@ export default {
         font-size: 0.8rem;
     }
     .date_item_wrapper{
+        display: inline-block;
         position: relative;
         margin: 0 auto;
         width: 100%;
+        color: black;
     }
     .date_item{
         position: relative;
@@ -106,6 +114,7 @@ export default {
     }
     .date_item .date_content{
         flex: 1;
+        color: black;
     }
     .date_item .date_delete{
         flex: 0 0 16.6%;
@@ -130,6 +139,13 @@ export default {
         padding-right: 1.2rem;
         line-height: 2rem;
         font-size: 1.2rem;
+    }
+    .date_item .date_item_date{
+        padding-bottom: 0.2rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        line-height: 1.2rem;
+        font-size: 0.8rem;
     }
     .date_item_desc{
         margin-bottom: 0.4rem;

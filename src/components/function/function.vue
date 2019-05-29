@@ -16,6 +16,13 @@
             <p class="function_item_desc">生活需要纪念日</p>
             <div class="function_item_tip_2">Memorial<br/>Day</div>
         </router-link>
+        <router-link class="function_item function_item_3"to="/function/editBill">
+            <p class="function_item_title">
+                <i class="icon iconfont icon-ico_kufangguanli_jizhangguanli"></i>记账单
+            </p>
+            <p class="function_item_desc">一笔一账需记清</p>
+            <div class="function_item_tip_3">Bill</div>
+        </router-link>
     </div>
     <router-view></router-view>
     <foot-top></foot-top>
@@ -77,6 +84,11 @@ export default {
         background-repeat: no-repeat;
         background-size: 100% auto;
     }
+    .function_item_3{
+        background-image: url('./banner3.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+    }
 
     .function_item_title{
         position: absolute;
@@ -123,5 +135,19 @@ export default {
         color: white;
         font-weight: 600;
         background-color: #ddb68d;
+    }
+    .function_item_tip_3{
+        position: absolute;
+        right: 1.5rem;
+        top: -2rem;
+        padding-left: .5rem;
+        padding-right: .5rem;
+        text-align: center;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 1.6rem;
+        color: white;
+        font-weight: 600;
+        background-color: #b94e08;
     }
 </style>

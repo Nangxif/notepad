@@ -2,31 +2,41 @@
   <div class="dateDetail">
     <head-top :is-back="isBack" page-title="查看日子"></head-top>
     <div class="dateDetail_wrapper">
-        <h2>关于notepad</h2>
-        <h3>版本1.0</h3>
-        <h3>开发者：曩昔方</h3>
-        <p>1.此嵌入式APP仅用于个人学习，不做商用；</p>
-        <p>2.APP切记不可用手机系统自带返回键进行操作，返回即为退出；</p>
-        <p>3.APP主要功能为“写手账”，“记日子”。</p>
-        <h2>开发初衷</h2>
-        <p>人这一生其实特别短暂，一晃都快触及而立之年。夜深人静的时候，也会想起自己老了的时候，身边还剩下什么人，让你花一辈子去疼爱的父母和贤妻是否安在？都说人生三分甜，七分苦，想把我人生这三分的甜，记录成册。古来稀之年翻开这些回忆，眼里满满的都是自己年轻时的影子。</p>
-        <p></p>
-        <p></p>
-        <p></p>
+        <p class="date">{{date}}</p>
+        <p class="title">{{title}}</p>
+        <p class="time">创建时间：{{new Date(time).getFullYear()}}年{{new Date(time).getMonth()+1}}月{{new Date(time).getDate()}}  {{new Date(time).getHours()}}:{{new Date(time).getMinutes()}}:{{new Date(time).getSeconds()}}  等级：{{level}}</p>
+        <p>{{content}}</p>
     </div>
   </div>
 </template>
 
 <script>
 import headTop from '@/components/common/head';
+import { getSingleDate } from '../../../../assets/api.js';
 export default {
     data(){
         return{
-            "isBack": true
+            "isBack": true,
+            date:"",
+            title:"",
+            level:"",
+            time:"",
+            content:""
         }
     },
     components:{
         headTop
+    },
+    mounted(){
+        getSingleDate(this.$route.query._id).then((res) => {
+            if(res.data.code == 1){
+                this.date = res.data.data.date;
+                this.title = res.data.data.dateTitle;
+                this.level = res.data.data.dateLevel;
+                this.time = res.data.data.createTime;
+                this.content = res.data.data.dateContent;
+            }
+        })
     }
 }
 </script>
@@ -38,18 +48,41 @@ export default {
         top: 3.031rem;
         width: 100%;
         height: calc(100% - 3.031rem);
-        padding:.5rem;
         background-color: white;
         overflow-x: hidden;
         overflow-y: auto;
         z-index: 501;
     }
-    .dateDetail_wrapper h2,.dateDetail_wrapper h3{
-        text-align: center;
-        margin-top:0.22rem;
-        margin-bottom:0.22rem;
+    .dateDetail_wrapper .date{
+        display: block;
+        padding-left: 1.2rem;
+        width: 100%;
+        height: 1.5rem;
+        line-height: 1.6rem;
+        background-color: #ebebeb;
+        color: #8a8a8a;
+        font-size: 0.8rem;
+    }
+    .dateDetail_wrapper .title{
+        text-align: left;
+        margin-top:0.6rem;
+        margin-bottom:0.6rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    .dateDetail_wrapper .time{
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        margin-bottom:0.6rem;
+        line-height: 1.2rem;
+        font-size: 0.8rem;
+        color: #aba9a9;
     }
     .dateDetail_wrapper p{
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
         font-style: 1rem;
     }
 

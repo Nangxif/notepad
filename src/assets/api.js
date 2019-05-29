@@ -52,6 +52,13 @@ let addDate = (obj) => {
 let getDates = () =>{
 	return axios.get('/fn/getDates',{})
 }
+let getSingleDate = (_id) =>{
+	return axios.get('/fn/getSingleDate',{
+		params:{
+			_id:_id
+		}
+	})
+}
 let deleteDates = (_id) =>{
 	return axios.get('/fn/deleteDates',{
 		params:{
@@ -69,5 +76,6 @@ export {
 	updateAddress,
 	addDate,
 	getDates,
+	getSingleDate,
 	deleteDates
 }

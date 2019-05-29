@@ -18,11 +18,13 @@ import Code from '@/components/personal/setting/code/code';
 import Note from '@/components/personal/note/note';
 import Dates from '@/components/personal/date/date';
 import DateDetail from '@/components/personal/date/dateDetail/dateDetail';
+// import Bill from '@/components/personal/date/date';
 import Save from '@/components/personal/save/save';
 import System from '@/components/personal/system/system';
 import About from '@/components/personal/system/about/about';
 import Func from '@/components/function/function';
 import EditDate from '@/components/function/editDate/editDate';
+import EditBill from '@/components/function/editBill/editBill';
 
 
 Vue.use(Router)
@@ -65,6 +67,9 @@ const router = new Router({
         children:[{
             path: '/function/editDate',//记日子界面
             component: EditDate
+        },{
+            path: '/function/editBill',//记账单界面
+            component: EditBill
         }]
     },
     {
