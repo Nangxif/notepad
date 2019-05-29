@@ -32,7 +32,7 @@ Vue.use(VuePreview)
 Vue.use(Croppa);
 // 注册日期插件
 Vue.use(Calendar)
-// 注册日期插件
+// 注册cookie插件
 Vue.use($cookies)
 
 if ('addEventListener' in document) {
