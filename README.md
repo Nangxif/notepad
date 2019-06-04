@@ -122,5 +122,9 @@ node_modules-->vue-croppa-->dist-->vue-croppa.css的样式类.croppa-container�
   </tr>
 </table>
 
+## 如何把前端项目部署到阿里云ECS服务器
+
+[点此跳转](https://github.com/Nangxif/notepad/blob/master/static/readme/aliyun.md)
+
 [后台接口项目](https://github.com/Nangxif/notepadServer)
 

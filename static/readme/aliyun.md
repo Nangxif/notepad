@@ -2,17 +2,31 @@
 
 ## 一、ECS的购买
 
-[学生服务器购买网址](https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.3b50640fAy8l5h)24岁以下，阿里自动获得学生身份！
+[学生服务器购买网址](https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.10695662.1244717.1.3b50640fAy8l5h)
+24岁以下，阿里自动获得学生身份！
+
+![学生服务器购买](https://github.com/Nangxif/notepad/blob/master/static/readme/ECS.png)
+
 我选择的是“云翼计划”的云服务器ECS，预装环境CentOS 7.3 64位，地域选择与自己所在地相近的，选择一个月，最后的价格是9.5元，不贵。没记错话应该会要你设置一下服务器的账号和密码，一般账号用root，密码自己设置。
 申请完ECS之后，我们先设置一下安全组，按照下面的步骤，进行安全组的设置
 
+![安全组设置步骤1](https://github.com/Nangxif/notepad/blob/master/static/readme/anquan.png)
+
+![安全组设置步骤2](https://github.com/Nangxif/notepad/blob/master/static/readme/config.png)
+
 目前此项目设置的安全组列表如下
+
+![安全组列表](https://github.com/Nangxif/notepad/blob/master/static/readme/list.png)
 
 ## 二、Xshell 6的连接
 这里我采用的是Xshell 6来作为访问ECS服务器的工具
 打开Xshell创建新的对话，点击“连接”输入主机号（这个主机号是你购买的ECS的公网ip）等信息，端口号默认22
 
+![设置主机](https://github.com/Nangxif/notepad/blob/master/static/readme/host.png)
+
 然后点击“用户身份验证”输入账号root密码
+
+![输入账号密码](https://github.com/Nangxif/notepad/blob/master/static/readme/pw.png)
 
 ## 三、配置简介
 
