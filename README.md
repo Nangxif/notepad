@@ -66,14 +66,6 @@ node_modules-->vue-croppa-->dist-->vue-croppa.css的样式类.croppa-container�
 
 ## 项目目录介绍
 
-一级目录|子孙级目录|备注
---|:--:|--:
-build||
-changelib||包含替换node_modules部分代码的文件
-config||服务器配置文件
-dist||打包之后生成的文件
-src|assets-->存放公共文件，包括icon（图标）、接口封装脚本等<br/>components|主要代码文件
-
 <table>
   <tr>
     <th>一级目录</th>
@@ -98,50 +90,37 @@ src|assets-->存放公共文件，包括icon（图标）、接口封装脚本等
   <tr>
     <td>src</td>
     <td>
-      <tr>
-        <td>assets</td>
-        <td>存放公共文件，包括icon（图标）、接口封装脚本等</td>
-      </tr>
-      <tr>
-        <td>components</td>
-        <td>
-          <tr>
-            <td>common</td>
-            <td></td>
-            <td>公共组件</td>
-          </tr>
-          <tr>
-            <td>function</td>
-            <td></td>
-            <td>功能模块</td>
-          </tr>
-          <tr>
-            <td>openview</td>
-            <td></td>
-            <td>webAPP打开界面</td>
-          </tr>
-          <tr>
-            <td>personal</td>
-            <td></td>
-            <td>“个人中心”模块</td>
-          </tr>
-          <tr>
-            <td>find.vue</td>
-            <td colspan="2">“发现”模块</td>
-          </tr>
-          <tr>
-            <td>index.vue</td>
-            <td colspan="2">“首页”模块</td>
-          </tr>
-        </td>
-        <td>所有组件</td>
-      </tr>
-      <tr>
-        <td>components</td>
-        <td>所有组件</td>
-      </tr>
+      assets-->存放公共文件，包括icon（图标）、接口封装脚本等<br/>
+      components-->所有组件<br/>
+      ----common-->公共组件<br/>
+      --------modal-->所有提示弹框（成功、失败等）<br/>
+      --------foot.vue-->底部导航栏<br/>
+      --------head.vue-->顶部导航栏<br/>
+      ----function-->功能模块<br/>
+      --------editBill-->“记账单”功能<br/>
+      --------editDate-->“记日子”功能<br/>
+      --------editNote-->“写手账”功能<br/>
+      ----openview-->webAPP打开界面<br/>
+      ----personal-->“个人中心”模块<br/>
+      ----find.vue-->“发现”模块<br/>
+      ----index.vue-->“首页”模块<br/>
+      router-->路由文件<br/>
+      App.vue-->主文件<br/>
+      main.js-->插件注册文件<br/>
     </td>
     <td>主要代码文件</td>
   </tr>
+  <tr>
+    <td>index.html</td>
+    <td></td>
+    <td>主视图文件</td>
+  </tr>
+  <tr>
+    <td>package.json</td>
+    <td></td>
+    <td>配置文件</td>
+  </tr>
 </table>
+
+[后台接口项目](https://github.com/Nangxif/notepadServer)
 
