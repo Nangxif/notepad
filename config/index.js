@@ -22,15 +22,15 @@ module.exports = {
 
     proxyTable: {
       '/users/*': {
-        target: 'http://192.168.24.146:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true
       },
       '/setting/*': {
-        target: 'http://192.168.24.146:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true
       },
       '/fn/*': {
-        target: 'http://192.168.24.146:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true
       }
     },

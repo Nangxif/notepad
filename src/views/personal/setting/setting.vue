@@ -58,6 +58,9 @@
             </router-link>
         </div>
     </div>
+    <!-- <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive> -->
     <router-view></router-view>
   </div>
 </template>
@@ -81,17 +84,33 @@ export default {
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
+        // settingData().then((res) => {
+        //     console.log(res)
+        //     this.userName = res.data.data.userName;
+        //     if(res.data.data.sex == "未设置"){
+        //         this.sex = res.data.data.sex;  
+        //     }else{
+        //         this.sex = res.data.data.sex == "男"?"♂":"♀";
+        //     }
+        //     this.tel = res.data.data.tel;
+        //     this.address = res.data.data.address;
+        // });
+
+        this.$api.get(this.$interface.SELFCENTER.get_settingdata).then(res => {
             console.log(res)
             this.userName = res.data.data.userName;
             if(res.data.data.sex == "未设置"){
                 this.sex = res.data.data.sex;  
+                this.$store.commit('updateSex',res.data.data.sex);
             }else{
                 this.sex = res.data.data.sex == "男"?"♂":"♀";
+                this.$store.commit('updateSex',res.data.data.sex == "男"?"♂":"♀");
             }
             this.tel = res.data.data.tel;
             this.address = res.data.data.address;
-        });
+            this.$store.commit('updateTel',res.data.data.tel);
+            this.$store.commit('updateAddress',res.data.data.address);
+        })
     }
 }
 </script>

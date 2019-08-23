@@ -35,6 +35,12 @@ export default {
             _this.sex = res.data.data.sex;
         });
     },
+    actived(){
+        console.log("已激活2");
+    },
+    deactived(){
+        console.log("已撤销2");  
+    },
     methods:{
         save(){
             // 此处进行保存操作

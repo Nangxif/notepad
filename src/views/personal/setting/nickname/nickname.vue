@@ -33,6 +33,8 @@ export default {
         let _this = this; 
         settingData().then((res) => {
             _this.username = res.data.data.userName;
+            _this.$store.commit('updateUserName',res.data.data.userName);
+
         });
     },
     methods:{

@@ -13,7 +13,13 @@
 
 <script>
 export default {
-  name: 'App'
+    name: 'App',
+    actived(){
+        console.log("已激活0");
+    },
+    deactived(){
+        console.log("已注销0");
+    }
 }
 </script>
 

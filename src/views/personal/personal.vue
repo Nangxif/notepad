@@ -47,6 +47,11 @@
         </div>
     </div>
     <foot-top></foot-top>
+
+    
+    <!-- <keep-alive>
+        <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive> -->
     <router-view></router-view>
 
 
@@ -56,25 +61,36 @@
 <script>
 import headTop from '@/components/common/head';
 import footTop from '@/components/common/foot';
-import {settingData} from '../../assets/api.js';
 export default {
+    components:{
+        headTop,
+        footTop
+    },
     data(){
         return{
             "isBack": false,
-            userName:"",
-            tel:""
+            userName:""
+        }
+    },
+    computed:{
+        tel(){
+            return this.$store.getters.tel
         }
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
+        this.$api.get(this.$interface.SELFCENTER.get_settingdata).then(res => {
             this.userName = res.data.data.userName;
             this.tel = res.data.data.tel;
-        });
+            this.$store.commit('updateUserName', res.data.data.userName);
+            this.$store.commit('updateTel', res.data.data.tel);
+        })
     },
-    components:{
-        headTop,
-        footTop
+    actived(){
+        console.log("已激活p");
+    },
+    deactived(){
+        console.log("已注销p");
     }
 
 }

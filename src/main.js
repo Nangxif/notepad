@@ -5,7 +5,14 @@ import App from './App'
 import router from './router'
 import FastClick from 'fastclick'
 import $ from 'jquery'
- import VueTouch from 'vue-touch'//手指触摸事件
+// 接口
+import api from './api/index';//接口封装
+import INTERFACE from './api/interface';//接口列表
+// vuex导入
+import Vuex from 'vuex';
+import store from './vuex/store';
+// 插件
+import VueTouch from 'vue-touch'//手指触摸事件
 import vcolorpicker from 'vcolorpicker';//颜色拾取
 import VuePreview from 'vue-preview';//图片预览
 import Croppa from 'vue-croppa';//图片裁剪
@@ -14,6 +21,10 @@ import 'vue-croppa/dist/vue-croppa.css';
 import './assets/swiper.min.css';
 import $cookies from 'vue-cookies';//cookie插件
 
+
+
+Vue.prototype.$api = api;
+Vue.prototype.$interface = INTERFACE;
 
 
 
@@ -49,6 +60,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
