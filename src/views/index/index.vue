@@ -2,11 +2,13 @@
   <div id="index">
     <head-top :is-back="isBack" page-title="首页"></head-top>
     <header class="header_title">
-        <div class="header_title_item active">好友手账</div>
-        <div class="header_title_item">好友日子</div>
-        <div class="header_title_item">好友账单</div>
+        <div :class="whichItem[0]==1?'header_title_item active':'header_title_item'" @click="changeItem(0)">好友手账</div>
+        <div :class="whichItem[1]==1?'header_title_item active':'header_title_item'" @click="changeItem(1)">好友日子</div>
+        <div :class="whichItem[2]==1?'header_title_item active':'header_title_item'" @click="changeItem(2)">好友账单</div>
     </header>
-    <fri-note></fri-note>
+    <fri-note v-if="whichItem[0]==1"></fri-note>
+    <fri-date v-if="whichItem[1]==1"></fri-date>
+    <fri-bill v-if="whichItem[2]==1"></fri-bill>
     <foot-top></foot-top>
     <!-- <loading></loading> -->
     <!-- <success :openModal="openModal" v-if="isModal" @closeModal="closeModal"></success> -->
@@ -34,7 +36,7 @@ export default {
     mixins:[mixin],
     data(){
     	return{
-    		
+    		whichItem:[1,0,0]
     	}
     },
     components:{
@@ -44,7 +46,9 @@ export default {
         success,
         error,
         warning,
-        "friNote":friNote
+        friNote,
+        friDate,
+        friBill
     },
     methods:{
         closeModal(){
@@ -53,6 +57,10 @@ export default {
                 clearTimeout(this.timer);
                 this.isModal=false;
             },1000);
+        },
+        changeItem(index){
+            this.whichItem.fill(0);
+            this.whichItem[index] = 1;
         }
     }
 }
