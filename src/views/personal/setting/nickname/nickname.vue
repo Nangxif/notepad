@@ -13,7 +13,7 @@
 <script>
 import headTop from '@/components/common/head';
 import success from '@/components/common/modal/success';
-import { settingData,updateuserName } from '../../../../assets/api.js';
+// import { settingData,updateuserName } from '../../../../assets/api.js';
 export default {
     data(){
         return{
@@ -31,18 +31,22 @@ export default {
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
-            _this.username = res.data.data.userName;
-            _this.$store.commit('updateUserName',res.data.data.userName);
-
-        });
+        this.username = this.$store.state.userName;
     },
     methods:{
         save(){
             // 此处进行保存操作
             let _this = this;
-            updateuserName(_this.username==""?"未设置":_this.username).then((res) => {
+            // updateuserName(_this.username==""?"未设置":_this.username).then((res) => {
+            //     if(res.data.code==1){
+            //         this.isModal = true;
+            //         this.openModal = true;
+            //     }
+            // })
+
+            this.$api.get(this.$interface.SELFCENTER.update_userName,{userName:(this.username==""?"未设置":this.username)}).then((res) => {
                 if(res.data.code==1){
+                    _this.$store.commit('updateUserName',_this.username);
                     this.isModal = true;
                     this.openModal = true;
                 }

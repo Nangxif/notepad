@@ -26,8 +26,8 @@ export default {
             "text": "更改成功",
             slide: [
               {
-                src: 'http://192.168.24.146:8080/static/img/avatar.0d5a53f.jpg',
-                msrc: 'http://192.168.24.146:8080/static/img/avatar.0d5a53f.jpg',
+                src: '/static/img/avatar.0d5a53f.jpg',
+                msrc: '/static/img/avatar.0d5a53f.jpg',
                 alt: '曩昔的头像',
                 title: '曩昔的头像',
                 w: 600,

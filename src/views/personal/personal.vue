@@ -61,6 +61,7 @@
 <script>
 import headTop from '@/components/common/head';
 import footTop from '@/components/common/foot';
+import { mapState } from 'vuex';
 export default {
     components:{
         headTop,
@@ -69,28 +70,20 @@ export default {
     data(){
         return{
             "isBack": false,
-            userName:""
+            // userName:""
         }
     },
     computed:{
-        tel(){
-            return this.$store.getters.tel
-        }
+        ...mapState(["userName","tel"])
     },
     mounted(){
         let _this = this; 
         this.$api.get(this.$interface.SELFCENTER.get_settingdata).then(res => {
-            this.userName = res.data.data.userName;
-            this.tel = res.data.data.tel;
+            // this.userName = res.data.data.userName;
+            // this.tel = res.data.data.tel;
             this.$store.commit('updateUserName', res.data.data.userName);
             this.$store.commit('updateTel', res.data.data.tel);
         })
-    },
-    actived(){
-        console.log("已激活p");
-    },
-    deactived(){
-        console.log("已注销p");
     }
 
 }

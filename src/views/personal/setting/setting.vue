@@ -67,20 +67,19 @@
 
 <script>
 import headTop from '@/components/common/head';
-import {settingData} from '../../../assets/api.js';
+import { mapState } from 'vuex';
 export default {
     name: 'setting',
     data(){
     	return{
     		"isBack": true,
-            userName:"",
-            sex:"",
-            tel:"",
-            address:""
     	}
     },
     components:{
 		headTop
+    },
+    computed:{
+        ...mapState(["userName","sex","address","tel"])
     },
     mounted(){
         let _this = this; 
@@ -98,16 +97,14 @@ export default {
 
         this.$api.get(this.$interface.SELFCENTER.get_settingdata).then(res => {
             console.log(res)
-            this.userName = res.data.data.userName;
+            this.$store.commit('updateUserName',res.data.data.userName);
             if(res.data.data.sex == "未设置"){
-                this.sex = res.data.data.sex;  
+                // this.sex = res.data.data.sex;  
                 this.$store.commit('updateSex',res.data.data.sex);
             }else{
                 this.sex = res.data.data.sex == "男"?"♂":"♀";
                 this.$store.commit('updateSex',res.data.data.sex == "男"?"♂":"♀");
             }
-            this.tel = res.data.data.tel;
-            this.address = res.data.data.address;
             this.$store.commit('updateTel',res.data.data.tel);
             this.$store.commit('updateAddress',res.data.data.address);
         })

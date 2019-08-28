@@ -3,7 +3,7 @@ axios.default.baseURL = process.env.API_ROOT;
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8';
 
 export default{
-	async get(url, param = {}, method = "GET" ){
+	async get(url, params = {}, method = "GET" ){
 		if(method.toUpperCase() == 'POST'){
 			return new Promise((resolve,reject) => {
 				axios.post(url,param).then(res => {
@@ -16,7 +16,7 @@ export default{
 		return new Promise((resolve, reject) => {
 			axios({
 				url,
-				param,
+				params,
 				method
 			}).then(res => {
 				resolve(res);

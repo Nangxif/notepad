@@ -10,7 +10,7 @@ import api from './api/index';//接口封装
 import INTERFACE from './api/interface';//接口列表
 // vuex导入
 import Vuex from 'vuex';
-import store from './vuex/store';
+import store from './vuex/index';
 // 插件
 import VueTouch from 'vue-touch'//手指触摸事件
 import vcolorpicker from 'vcolorpicker';//颜色拾取
@@ -63,4 +63,15 @@ new Vue({
   store,
   components: { App },
   template: '<App/>'
+})
+
+
+
+
+Vue.mixin({
+    data(){
+        return {
+            
+        }
+    }
 })

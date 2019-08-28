@@ -32,6 +32,10 @@ module.exports = {
       '/fn/*': {
         target: 'http://localhost:3000',
         changeOrigin: true
+      },
+      '/find/*': {
+        target: 'http://xxiaoyuan.top',
+        changeOrigin: true
       }
     },
     /**

@@ -29,7 +29,7 @@ export default {
             "timer": {},
             "text": "下载成功",
             link: "15521223592",
-            logo: "http://192.168.24.146:8080/static/img/avatar.0d5a53f.jpg",
+            logo: "/static/img/avatar.0d5a53f.jpg",
             dataUrl:"",
             color:"#fed640"
         }

@@ -13,7 +13,6 @@
 <script>
 import headTop from '@/components/common/head';
 import success from '@/components/common/modal/success';
-import { settingData,updateAddress } from '../../../../assets/api.js';
 export default {
     data(){
         return{
@@ -31,16 +30,15 @@ export default {
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
-            _this.address = res.data.data.address;
-        });
+        this.address = this.$store.state.address;
     },
     methods:{
         save(){
             // 此处进行保存操作
             let _this = this;
-            updateAddress(_this.address==""?"未设置":_this.address).then((res) => {
+            this.$api.get(this.$interface.SELFCENTER.update_address,{address:this.address==""?"未设置":this.address}).then(res => {
                 if(res.data.code==1){
+                    this.$store.commit('updateAddress',_this.address);
                     this.isModal = true;
                     this.openModal = true;
                 }

@@ -18,6 +18,7 @@
 import headTop from '@/components/common/head';
 import success from '@/components/common/modal/success.vue';
 import { settingData,updateTel } from '../../../../assets/api.js';
+import { mapState } from 'vuex';
 export default {
     data(){
         return{
@@ -35,16 +36,22 @@ export default {
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
-            _this.tel = res.data.data.tel;
-        });
+        this.tel = this.$store.state.tel;
     },
     methods:{
         save(){
             // 此处进行保存操作
             let _this = this;
-            updateTel(_this.tel==""?"未设置":_this.tel).then((res) => {
+            // updateTel(_this.tel==""?"未设置":_this.tel).then((res) => {
+            //     if(res.data.code==1){
+            //         this.isModal = true;
+            //         this.openModal = true;
+            //     }
+            // })
+            console.log(_this)
+            this.$api.get(this.$interface.SELFCENTER.update_tel,{tel:(this.tel==""?"未设置":this.tel)}).then((res) => {
                 if(res.data.code==1){
+                    this.$store.commit('updateTel',_this.tel);
                     this.isModal = true;
                     this.openModal = true;
                 }
