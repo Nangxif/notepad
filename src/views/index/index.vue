@@ -2,7 +2,7 @@
   <div id="index">
     <head-top :is-back="isBack" page-title="首页"></head-top>
     <header class="header_title">
-        <div class="header_title_item">好友手账</div>
+        <div class="header_title_item active">好友手账</div>
         <div class="header_title_item">好友日子</div>
         <div class="header_title_item">好友账单</div>
     </header>
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+import mixin from '@/mixins/mixin.js';
 import headTop from '@/components/common/head';
 import footTop from '@/components/common/foot';
 import loading from '@/components/common/modal/loading.vue';
@@ -30,12 +31,10 @@ import friDate from './fri_date/fri_date';
 import friBill from './fri_bill/fri_bill';
 export default {
     name: 'Index',
+    mixins:[mixin],
     data(){
     	return{
-    		"isBack": false,
-            "openModal": true,
-            "isModal": true,
-            "timer": {}
+    		
     	}
     },
     components:{
@@ -68,7 +67,7 @@ export default {
         width:100%;
         height: 2rem;
         background-color: white;
-        border-bottom: 1px solid #d4d4d4;
+        border-bottom: 1px solid #eeeeee;
     }
     .header_title_item{
         flex: 1;
@@ -77,5 +76,9 @@ export default {
         font-size: .8rem;
         text-align: center;
         color: #979797;
+    }
+    .header_title_item.active{
+        color: #fed640 !important;
+        border-bottom: 1px solid #fed640 !important;
     }
 </style>
