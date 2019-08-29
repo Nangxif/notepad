@@ -10,31 +10,49 @@
                 <div class="system_item_tip">更换广告<i class="icon iconfont icon-arrowright"></i></div>
             </div>
             <div class="system_item">
-                <div class="system_item_tip">清除缓存</div>
+                <div class="system_item_tip" @click="clear">清除缓存</div>
             </div>
         </div>
         <a @click="exit" class="exit">退出</a>
     </div>
+    <success :openModal="openModal" v-if="isModal" @closeModal="closeModal"></success>
     <router-view></router-view>
-
 
   </div>
 </template>
 
 <script>
 import headTop from '@/components/common/head';
+import success from '@/components/common/modal/success.vue';
+import mixin from '@/mixins/mixin.js';
 export default {
     data(){
         return{
             "isBack": true
         }
     },
+    mixins:[mixin],
     components:{
-        headTop
+        headTop,
+        success
     },
     methods:{
+        // 清除缓存
+        clear(){
+            sessionStorage.clear();
+            localStorage.clear();
+            this.openModal = true;
+            this.isModal = true;
+        },
         exit(){
-            
+            let _this = this;
+            this.$api.get(this.$interface.USER.loginout).then(res => {
+                if(res.data.code == 1){
+                    _this.$router.replace({
+                        path: '/personal/system'
+                    })  
+                }
+            })
         }
     }
 }

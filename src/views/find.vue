@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style>
+<style scope>
     .find_wrapper{
         position: fixed;
         left: 0px;
@@ -97,10 +97,10 @@ export default {
         margin: 0;
         list-style-type: none;
     }
-    body{
+    /*body{
         width: 95%;
         margin: 10px auto;
-    }
+    }*/
     .pubu{
         margin: 0 auto;
         margin-top: 1rem;

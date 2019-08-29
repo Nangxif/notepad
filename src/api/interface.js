@@ -34,6 +34,8 @@ const USER = {
 	login: '/users/login',
 	// 注册
 	register: '/users/register',
+	// 注销
+	loginout: '/users/loginout'
 }
 
 export default{

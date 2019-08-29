@@ -2,7 +2,11 @@
   <div class="nickname">
     <head-top :is-back="isBack" page-title="修改性别"></head-top>
     <div class="nickname_wrapper">
-        <input type="text" v-model="sex"/>
+        <select v-model="sex">
+            <option value="男">男</option>
+            <option value="女">女</option>
+            <option value="未设置">未设置</option>
+        </select>
         <p>你是GG还是MM</p>
         <a @click="save">保存</a>
     </div>
@@ -31,22 +35,15 @@ export default {
     },
     mounted(){
         let _this = this; 
-        settingData().then((res) => {
-            _this.sex = res.data.data.sex;
-        });
-    },
-    actived(){
-        console.log("已激活2");
-    },
-    deactived(){
-        console.log("已撤销2");  
+        this.sex = this.$store.state.sex;
     },
     methods:{
         save(){
             // 此处进行保存操作
             let _this = this;
-            updateSex(_this.sex==""?"未设置":_this.sex).then((res) => {
+            this.$api.get(this.$interface.SELFCENTER.update_sex,{sex:(_this.sex==""?"未设置":_this.sex)}).then(res => {
                 if(res.data.code==1){
+                    this.$store.commit('updateSex',this.sex);
                     this.isModal = true;
                     this.openModal = true;
                 }
@@ -77,7 +74,7 @@ export default {
         overflow-y: auto;
         z-index: 501;
     }
-    .nickname_wrapper input{
+    .nickname_wrapper select{
         display: block;
         margin: 0 auto;
         margin-top: 1rem;
@@ -88,6 +85,7 @@ export default {
         border-bottom: 1px solid #fed640;
         font-size: 1rem;
         outline: none;
+        background-color: transparent;
     }
     .nickname_wrapper p{
         margin: 0 auto;

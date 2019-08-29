@@ -4,7 +4,7 @@
     <div class="friend_wrapper">
         <div class="friend_roll">
             <div class="friend_list">
-                <router-link class="friend_item" to="">
+                <router-link class="friend_item" to="/personal/friend/addFriend">
                     <div class="friend_item_avatar">
                         <div><i class="icon iconfont icon-tianjiahaoyou"></i></div>
                     </div>
@@ -120,6 +120,8 @@
         </div>
     </div>
     <div class="friend_index_tip" v-if="isSelected">{{selectedIndex}}</div>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -239,7 +241,7 @@ export default {
         right: 0px;
         width: 30px;
         height: 100%;
-        z-index: 502;
+        z-index: 501;
     }
     .friend_index_wrapper{
         position: fixed;

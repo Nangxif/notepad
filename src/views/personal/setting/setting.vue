@@ -26,7 +26,7 @@
                     性别
                 </div>
                 <div class="setting_content">
-                    {{sex}}
+                    {{getSex}}
                     <i class="icon iconfont icon-arrowright"></i>
                 </div>
             </router-link>
@@ -67,7 +67,7 @@
 
 <script>
 import headTop from '@/components/common/head';
-import { mapState } from 'vuex';
+import { mapState,mapGetters } from 'vuex';
 export default {
     name: 'setting',
     data(){
@@ -79,32 +79,14 @@ export default {
 		headTop
     },
     computed:{
-        ...mapState(["userName","sex","address","tel"])
+        ...mapState(["userName","sex","address","tel"]),
+        ...mapGetters(["getSex"])
     },
     mounted(){
         let _this = this; 
-        // settingData().then((res) => {
-        //     console.log(res)
-        //     this.userName = res.data.data.userName;
-        //     if(res.data.data.sex == "未设置"){
-        //         this.sex = res.data.data.sex;  
-        //     }else{
-        //         this.sex = res.data.data.sex == "男"?"♂":"♀";
-        //     }
-        //     this.tel = res.data.data.tel;
-        //     this.address = res.data.data.address;
-        // });
-
         this.$api.get(this.$interface.SELFCENTER.get_settingdata).then(res => {
-            console.log(res)
             this.$store.commit('updateUserName',res.data.data.userName);
-            if(res.data.data.sex == "未设置"){
-                // this.sex = res.data.data.sex;  
-                this.$store.commit('updateSex',res.data.data.sex);
-            }else{
-                this.sex = res.data.data.sex == "男"?"♂":"♀";
-                this.$store.commit('updateSex',res.data.data.sex == "男"?"♂":"♀");
-            }
+            this.$store.commit('updateSex',res.data.data.sex);
             this.$store.commit('updateTel',res.data.data.tel);
             this.$store.commit('updateAddress',res.data.data.address);
         })

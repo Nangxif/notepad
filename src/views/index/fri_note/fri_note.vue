@@ -7,6 +7,7 @@
             </div>
             <div>
                 天赋早报
+                <span>屏蔽此条</span>
             </div>
         </div>
         <p class="fri_note_title">开启手账的第一天</p>
@@ -19,6 +20,7 @@
             </div>
             <div>
                 天赋早报
+                <span>屏蔽此条</span>
             </div>
         </div>
         <p class="fri_note_title">开启手账的第一天</p>
@@ -31,6 +33,7 @@
             </div>
             <div>
                 天赋早报
+                <span>屏蔽此条</span>
             </div>
         </div>
         <p class="fri_note_title">开启手账的第一天</p>
@@ -83,8 +86,22 @@ export default {
         border-radius: 50%;
     }
     .fri_note_top div:nth-child(2){
+        flex: 1;
         height: 4rem;
         line-height: 4rem;
+        padding-right: .5rem;
+        overflow: hidden;
+    }
+    .fri_note_top div:nth-child(2) span{
+        float: right;
+        margin-top: 1.2rem;
+        padding: 0 .5rem;
+        background-color: #fed640;
+        border-radius: .5rem;
+        height: 1.6rem;
+        line-height: 1.6rem;
+        color: white;
+        font-size: .5rem;
     }
     .fri_note_title{
         padding: 0 .5rem;

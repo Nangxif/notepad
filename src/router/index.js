@@ -89,7 +89,12 @@ const router = new Router({
         children:[{
             path: '/personal/friend',//我的好友界面
             name: 'Friend',
-            component: (resolve) => require(['@/views/personal/friend/friend'],resolve)
+            component: (resolve) => require(['@/views/personal/friend/friend'],resolve),
+            children:[{
+                path: '/personal/friend/addFriend',
+                name: 'AddFriend',
+                component: (resolve) => require(['@/views/personal/friend/addFriend/addFriend'],resolve)
+            }]
         },{
             path: '/personal/setting',//设置界面
             name: 'Setting',

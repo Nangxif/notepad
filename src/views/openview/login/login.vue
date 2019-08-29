@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import {login} from '../../../assets/api.js';
 export default {
   name: 'Login',
   data(){
@@ -25,15 +24,6 @@ export default {
   methods:{
     loginin(){
         let _target = this;
-        // login({ 
-        //     tel:_target.tel,
-        //     password: _target.password
-        // }).then((res)=>{
-        //     if(res.data.code == 1){
-        //          _target.$router.push({path:"/index"});
-        //     }
-        // });
-
 
         this.$api.get(this.$interface.USER.login,{
             tel:_target.tel,
