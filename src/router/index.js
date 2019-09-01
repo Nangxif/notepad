@@ -61,7 +61,21 @@ const router = new Router({
     {
         path: '/index',//首页界面
         name: 'Index',
-        component: (resolve) => require(['@/views/index/index'],resolve)
+        component: (resolve) => require(['@/views/index/index'],resolve),
+        children:[{
+            path: '/index/friBill',
+            name: 'FriBill',
+            component: (resolve) => require(['@/views/index/fri_bill/fri_bill'],resolve)
+        },{
+            path: '/index/friDate',
+            name: 'FriDate',
+            component: (resolve) => require(['@/views/index/fri_date/fri_date'],resolve)
+        },{
+            path: '/index/friNote',
+            name: 'FriNote',
+            component: (resolve) => require(['@/views/index/fri_note/fri_note'],resolve)
+        }],
+        redirect: '/index/friNote'
     },
     {
         path: '/find',//发现界面

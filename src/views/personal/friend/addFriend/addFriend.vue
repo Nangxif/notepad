@@ -2,10 +2,14 @@
   <div class="addfriend">
     <head-top :is-back="isBack" page-title="添加朋友"></head-top>
     <div class="addFriend_wrapper">
-        <input type="text" name="findTel" class="addFriend_search"/>
+        <input type="text" name="findTel" class="addFriend_search" v-model="obj.name"/>
         <p>请输入好友的电话号码进行查询</p>
-        <a>查找好友</a>
+        <a @click="change">查找好友</a>
+        <p v-demo></p>
+        {{obj.name}}
     </div>
+
+    
   </div>
 </template>
 
@@ -14,14 +18,36 @@ import headTop from '@/components/common/head';
 export default {
 	data(){
 		return{
-			"isBack":true
+			"isBack":true,
+            obj:{
+                name:'nangxi'
+            }
 		}
 	},
+    watch:{
+        "obj.name":{
+            handler(newVal,oldVal){
+                console.log("change")
+            }
+        }
+    },
+    directives:{
+        demo:{
+            bind(el,binding,vnode){
+                let s =JSON.stringify;
+                $(el).html(`name:${s(binding.name)};
+                            value:${s(binding.value)}
+                            `);
+            }
+        }
+    },
     components:{
 		headTop
     },
     methods:{
-        
+        change(){
+            this.obj.name = 'nang'; 
+        }
     }
 }
 </script>

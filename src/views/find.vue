@@ -2,33 +2,8 @@
   <div class="find">
     <head-top page-title="发现"></head-top>
     <div class="find_wrapper">
-        <div id="vm" class="pubu" v-cloak>
-            <ul id="show" class="yg yg_l">
-                <li v-for="(item,index) in showwz" v-if="index%2==0">
-                    <div style="position: relative;">
-                        <img :src="item.e_img" alt="">
-                        <div class="u_xinx">
-                            <img :src="item.u_img" alt="">
-                            <span>{{item.u_name}}</span>
-                        </div>
-                    </div>
-                    <p>{{item.e_intro}}</p>
-                </li>
-            </ul>
-            <ul class="yg yg_r">
-                <li v-for="(item,index) in showwz" v-if="index%2==1" >
-                    <div style="position: relative;">
-                        <img :src="item.e_img" alt="">
-                        <div class="u_xinx">
-                            <img :src="item.u_img" alt="">
-                            <span>{{item.u_name}}</span>
-                        </div>
-                    </div>
-                    <p>{{item.e_intro}}</p>
-                </li>
-            </ul>
-            <div style="clear: both;"></div>
-        </div>
+        <!-- <p v-demo>{{msg}}</p> -->
+        <!-- <a @click="chan">点击</a> -->
     </div>
     <foot-top></foot-top>
     <loading v-if="isLoading"></loading>
@@ -44,7 +19,24 @@ export default {
         return{
             showwz:[],
             wznum:'',
-            isLoading:false
+            isLoading:false,
+            msg:"测试"
+        }
+    },
+    directives:{
+        demo:{
+            bind(){
+                console.log("bind触发");
+            },
+            inserted(){
+                console.log("inserted触发");
+            },
+            update(){
+                console.log("update触发");
+            },
+            componentUpdated(){
+                console.log("componentUpdated触发")
+            }
         }
     },
     components:{
@@ -56,24 +48,14 @@ export default {
         getwz:function(){
             var that = this;
             this.isLoading = true;
-            $.ajax({
-                url:"http://xxiaoyuan.top/controller/wz/wz.php",
-                type:"POST",
-                dataType:"json",
-                data:{
-                    u_id:512,
-                },
-                success:function(res){
-                    console.log(res);
-                    that.showwz = res.data;
-                    that.wznum = res.data.length;
-                    that.isLoading = false;
-                }
-            });
+            
+        },
+        chan(){
+            this.msg = "测试2"
         }
     },
     mounted:function(){
-        this.getwz();
+        
     }
 }
 </script>

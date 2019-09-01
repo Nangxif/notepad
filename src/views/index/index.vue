@@ -2,13 +2,14 @@
   <div id="index">
     <head-top :is-back="isBack" page-title="首页"></head-top>
     <header class="header_title">
-        <div :class="whichItem[0]?'header_title_item active':'header_title_item'" @click="changeItem(0)">好友手账</div>
-        <div :class="whichItem[1]?'header_title_item active':'header_title_item'" @click="changeItem(1)">好友日子</div>
-        <div :class="whichItem[2]?'header_title_item active':'header_title_item'" @click="changeItem(2)">好友账单</div>
+        <router-link class="header_title_item" to="/index/friNote">好友手账</router-link>
+        <router-link class="header_title_item" to="/index/friDate">好友日子</router-link>
+        <router-link class="header_title_item" to="/index/friBill">好友账单</router-link>
     </header>
-    <fri-note v-if="whichItem[0]"></fri-note>
+    <!-- <fri-note v-if="whichItem[0]"></fri-note>
     <fri-date v-if="whichItem[1]"></fri-date>
-    <fri-bill v-if="whichItem[2]"></fri-bill>
+    <fri-bill v-if="whichItem[2]"></fri-bill> -->
+    <router-view v-tmove="['/index/friNote','/index/friDate','/index/friBill']"></router-view>
     <foot-top></foot-top>
     <!-- <loading></loading> -->
     <!-- <success :openModal="openModal" v-if="isModal" @closeModal="closeModal"></success> -->
@@ -28,15 +29,15 @@ import warning from '@/components/common/modal/warning.vue';
 
 
 
-import friNote from './fri_note/fri_note';
-import friDate from './fri_date/fri_date';
-import friBill from './fri_bill/fri_bill';
+// import friNote from './fri_note/fri_note';
+// import friDate from './fri_date/fri_date';
+// import friBill from './fri_bill/fri_bill';
 export default {
     name: 'Index',
     mixins:[mixin],
     data(){
     	return{
-    		whichItem:[true,false,false]
+            index: 0
     	}
     },
     components:{
@@ -45,23 +46,40 @@ export default {
         loading,
         success,
         error,
-        warning,
-        friNote,
-        friDate,
-        friBill
+        warning
+    },
+    directives:{
+        tmove:{
+            bind(el,binding,vnode){
+                let length = binding.value.length;
+                let disX = 0;
+                let x = 0;
+                el.ontouchstart = (ev)=>{
+                    let touch = ev.touches[0];
+                    disX = touch.clientX; 
+                    document.ontouchmove = (ev)=>{
+                        let touch = ev.touches[0];
+                        x = touch.clientX;
+                    }
+                    document.ontouchend = () => {
+                        document.ontouchmove = null;
+                        document.ontouchend = null;
+                        if(disX-x>50){
+                            if(vnode.context.index<length-1) ++vnode.context.index;     //debugger;
+                            //在自定义的指令中，只有通过vnode.context才能获取到vue对象
+                            vnode.context.$router.replace({ path:binding.value[vnode.context.index]})
+                            
+                        }else if(x - disX >50){
+                            if(vnode.context.index>0) --vnode.context.index;// debugger;
+                            vnode.context.$router.replace({ path:binding.value[vnode.context.index]})
+                        }
+                    }
+                }
+            }
+        }
     },
     methods:{
-        // closeModal(){
-        //     this.openModal = false;
-        //     this.timer=setTimeout(()=>{
-        //         clearTimeout(this.timer);
-        //         this.isModal=false;
-        //     },1000);
-        // },
-        changeItem(index){
-            this.whichItem = [false,false,false];
-            this.whichItem[index] = true;
-        }
+       
     }
 }
 </script>

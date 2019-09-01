@@ -11,7 +11,7 @@
                             <div class="date_item_title">{{item.dateTitle}}</div>
                             <div class="date_item_date">发生时间：{{item.date}}</div>
                             <div class="date_item_desc">{{item.dateContent}}</div>
-                            <p class="date_item_time">创建时间：{{new Date(item.createTime).getFullYear()}}年{{new Date(item.createTime).getMonth()+1}}月{{new Date(item.createTime).getDate()}}  {{new Date(item.createTime).getHours()}}:{{new Date(item.createTime).getMinutes()}}:{{new Date(item.createTime).getSeconds()}}    等级：{{item.dateLevel}}</p>
+                            <p class="date_item_time">创建时间：{{item.createTime|timeFilter}}    等级：{{item.dateLevel}}</p>
                         </router-link>
                         <div class="date_delete">
                             <a @click.stop="deleteItem(index,item._id)"><i class="icon iconfont icon-weibiaoti6"></i></a>
@@ -34,6 +34,11 @@ export default {
             "isBack": true,
             date_data: [],
             dataArr: []
+        }
+    },
+    filters:{
+        timeFilter(val){
+            return `${new Date(val).getFullYear()}年${new Date(val).getMonth()+1}月${new Date(val).getDate()}日${new Date(val).getHours()}:${new Date(val).getMinutes()}:${new Date(val).getSeconds()}`
         }
     },
     mounted(){

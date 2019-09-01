@@ -4,7 +4,8 @@
     <div class="dateDetail_wrapper">
         <p class="date">{{date}}</p>
         <p class="title">{{title}}</p>
-        <p class="time">创建时间：{{new Date(time).getFullYear()}}年{{new Date(time).getMonth()+1}}月{{new Date(time).getDate()}}  {{new Date(time).getHours()}}:{{new Date(time).getMinutes()}}:{{new Date(time).getSeconds()}}  等级：{{level}}</p>
+        <p class="time">创建时间：{{time|timeFilter}}  等级：{{level}}</p>
+        <p class="">距离当天{{time|howmuchTime}}</p>
         <p>{{content}}</p>
     </div>
   </div>
@@ -22,6 +23,25 @@ export default {
             level:"",
             time:"",
             content:""
+        }
+    },
+    filters:{
+        timeFilter(val){
+             console.log("2");
+            
+
+            return `${new Date(val).getFullYear()}年${new Date(val).getMonth()+1}月${new Date(val).getDate()}日${new Date(val).getHours()}:${new Date(val).getMinutes()}:${new Date(val).getSeconds()}`
+        },
+        howmuchTime(val){
+            let last = new Date() - val;
+            // console.log(Math.abs(last));
+            let { day, hour, minute, second } = {
+                day: Math.floor(Math.abs(last)/(1000*60*60*24)),
+                hour: (Math.abs(last) - day*1000*60*60*24)%(1000*60*60*24),
+                minute: (Math.abs(last) - hour*60*60*1000)%(1000*60*60),
+                second: (Math.abs(last) - minute*60*1000)%(1000*60)
+            }
+            return last>0?`还有${day}天${hour}时${minute}分${second}秒`:`已过去${day}天${hour}时${minute}分${second}秒`;
         }
     },
     components:{
