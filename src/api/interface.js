@@ -25,7 +25,15 @@ const SELFCENTER = {
 	// 更改电话
 	update_tel: '/setting/updateTel',
 	// 更改地址
-	update_address: '/setting/updateAddress'
+	update_address: '/setting/updateAddress',
+	// 查找好友
+	get_friend: '/friend/getFriend',
+	// 返回好友列表
+	get_friends: '/friend/getFriends',
+	// 添加好友
+	add_friend: '/friend/addFriend',
+	// 通过id列表查找信息
+	get_friendbyid: '/friend/getFriendById'
 
 }
 

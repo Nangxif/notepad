@@ -11,6 +11,9 @@
                     <div class="friend_item_nickname">添加新朋友</div>
                 </router-link>
             </div>
+
+            
+
             <a class="friend_list_a" name="A">A</a>
             <div class="friend_list">
                 <router-link class="friend_item" to="">
@@ -127,19 +130,45 @@
 
 <script>
 import headTop from '@/components/common/head';
+import vPinyin from '@/assets/pinyin/vue-py.js';
 export default {
 	data(){
 		return{
 			"isBack":true,
             "index":["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"],
             "selectedIndex": "A",
-            "isSelected": false
+            "isSelected": false,
+            friendNameList:[],
+            friendNameArr:[],
+            friendAvatarList: [],
 		}
 	},
     components:{
 		headTop
     },
+    mounted(){
+        // this.$api.get(this.$interface.SELFCENTER.get_friends).then(res => {
+        //     if(res.data.code == 1){
+        //         // res.data.data.
+        //         // vPinyin.chineseToPinYin
+        //     }
+        // })
+        this.getFriendList();
+        
+    },
     methods:{
+        async getFriendList(){
+            let f = await this.$api.get(this.$interface.SELFCENTER.get_friends);
+            let g = await this.$api.get(this.$interface.SELFCENTER.get_friendbyid,{friendList:f.data.data.friendList.replace(/,/,"|")});
+            console.log(g);
+            let arr = g.data.data;
+            for(let i = 0;i< arr.length; i++){
+                this.friendNameArr.push(arr[i].userName);
+                this.friendNameList.push(vPinyin.chineseToPinYin(arr[i].userName)[0]);
+                this.friendAvatarList.push(arr[i].avatarUrl);
+            }
+            console.log([...new Set(this.friendNameList)]);
+        },
         navigation(point){
             this.selectedIndex = point;
             this.isSelected = true;

@@ -6,7 +6,7 @@ export default{
 	async get(url, params = {}, method = "GET" ){
 		if(method.toUpperCase() == 'POST'){
 			return new Promise((resolve,reject) => {
-				axios.post(url,param).then(res => {
+				axios.post(url,params).then(res => {
 					resolve(res);
 				}).catch(err => {
 					reject(err);

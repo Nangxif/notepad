@@ -33,8 +33,8 @@ module.exports = {
         target: 'http://localhost:3000',
         changeOrigin: true
       },
-      '/find/*': {
-        target: 'http://xxiaoyuan.top',
+      '/friend/*': {
+        target: 'http://localhost:3000',
         changeOrigin: true
       }
     },
