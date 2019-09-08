@@ -104,11 +104,15 @@ const router = new Router({
             path: '/personal/friend',//我的好友界面
             name: 'Friend',
             component: (resolve) => require(['@/views/personal/friend/friend'],resolve),
-            children:[{
-                path: '/personal/friend/addFriend',
-                name: 'AddFriend',
-                component: (resolve) => require(['@/views/personal/friend/addFriend/addFriend'],resolve)
+            children: [{
+                path: '/personal/friend/:nickname',
+                name: 'Contact',
+                component: (resolve) => require(['@/views/personal/friend/contact/contact'],resolve)
             }]
+        },{
+            path: '/personal/addFriend',
+            name: 'AddFriend',
+            component: (resolve) => require(['@/views/personal/friend/addFriend/addFriend'],resolve)
         },{
             path: '/personal/setting',//设置界面
             name: 'Setting',

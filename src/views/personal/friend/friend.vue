@@ -4,7 +4,7 @@
     <div class="friend_wrapper">
         <div class="friend_roll">
             <div class="friend_list">
-                <router-link class="friend_item" to="/personal/friend/addFriend">
+                <router-link class="friend_item" to="/personal/addFriend">
                     <div class="friend_item_avatar">
                         <div><i class="icon iconfont icon-tianjiahaoyou"></i></div>
                     </div>
@@ -14,7 +14,8 @@
 
             
 
-            <a class="friend_list_a" name="A">A</a>
+
+            <!-- <a class="friend_list_a" name="A">A</a>
             <div class="friend_list">
                 <router-link class="friend_item" to="">
                     <div class="friend_item_avatar">
@@ -112,7 +113,22 @@
                     </div>
                     <div class="friend_item_nickname">nangxi</div>
                 </router-link>
-            </div>
+            </div> -->
+
+
+            <template v-for="item in friendNameList">
+                <a class="friend_list_a" :name="item">{{item}}</a>
+                <div class="friend_list">
+                    <template v-for="items,index in friendNameArr" v-if="friendNameArr[index][0]==item">
+                        <router-link class="friend_item" :to="'/personal/friend/'+items[1]">
+                            <div class="friend_item_avatar">
+                                <img src="../avatar.jpg"/>
+                            </div>
+                            <div class="friend_item_nickname">{{items[1]}}</div>
+                        </router-link>
+                    </template>
+                </div>
+            </template>
             <p class="friend_list_end">无更多好友，快去添加吧！</p>
         </div>
         
@@ -123,7 +139,6 @@
         </div>
     </div>
     <div class="friend_index_tip" v-if="isSelected">{{selectedIndex}}</div>
-
     <router-view></router-view>
   </div>
 </template>
@@ -154,21 +169,41 @@ export default {
         //     }
         // })
         this.getFriendList();
-        
     },
     methods:{
         async getFriendList(){
+            this.friendList = [];
+            this.friendNameArr = [];
+            this.friendAvatarList = [];
             let f = await this.$api.get(this.$interface.SELFCENTER.get_friends);
-            let g = await this.$api.get(this.$interface.SELFCENTER.get_friendbyid,{friendList:f.data.data.friendList.replace(/,/,"|")});
-            console.log(g);
+            let g = await this.$api.get(this.$interface.SELFCENTER.get_friendbyid,{friendList:f.data.data.friendList||""},"POST");
+            // console.log(g);
             let arr = g.data.data;
+            let friendNameL = [];
             for(let i = 0;i< arr.length; i++){
-                this.friendNameArr.push(arr[i].userName);
-                this.friendNameList.push(vPinyin.chineseToPinYin(arr[i].userName)[0]);
+                this.friendNameArr.push([vPinyin.chineseToPinYin(arr[i].userName)[0].toUpperCase(),arr[i].userName]);
+                friendNameL.push(vPinyin.chineseToPinYin(arr[i].userName)[0].toUpperCase());
                 this.friendAvatarList.push(arr[i].avatarUrl);
             }
-            console.log([...new Set(this.friendNameList)]);
+            this.friendNameList = [...new Set(friendNameL.sort())];
         },
+        // getFriendList(context){
+        //     context.friendList = [];
+        //     context.friendNameArr = [];
+        //     context.friendAvatarList = [];
+        //     context.$api.get(context.$interface.SELFCENTER.get_friends).then(res => {
+        //         return context.$api.get(context.$interface.SELFCENTER.get_friendbyid,{friendList:res.data.data.friendList||""},"POST");
+        //     }).then(resp => {
+        //         let arr = resp.data.data;
+        //         let friendNameL = [];
+        //         for(let i = 0;i< arr.length; i++){
+        //             context.friendNameArr.push([vPinyin.chineseToPinYin(arr[i].userName)[0].toUpperCase(),arr[i].userName]);
+        //             friendNameL.push(vPinyin.chineseToPinYin(arr[i].userName)[0].toUpperCase());
+        //             context.friendAvatarList.push(arr[i].avatarUrl);
+        //         }
+        //         context.friendNameList = [...new Set(friendNameL.sort())];
+        //     })
+        // },
         navigation(point){
             this.selectedIndex = point;
             this.isSelected = true;

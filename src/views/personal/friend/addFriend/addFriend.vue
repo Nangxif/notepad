@@ -70,7 +70,8 @@ export default {
                     if(_this.tel != _this.$store.state.tel){
                         if(res[1].data.code == 1){
                             // 赋值好友列表
-                            _this.friendList = res[1].data.data.friendList.split(",");
+                            console.log(res[1]);
+                            _this.friendList = (res[1].data.data.friendList||"").split("|");
                             let a = _this.friendList.findIndex(function(val,index){
                                 return val === _this.friendObj.id;
                             })
@@ -101,12 +102,13 @@ export default {
             if(!this.isAdd){
                 _this.friendList.push(_this.friendObj.id);
                 this.$api.get(this.$interface.SELFCENTER.add_friend,{
-                    friendList: _this.friendList.join(",")
+                    friendList: _this.friendList.join("|")
                 },"POST").then(res => {
                     console.log(res);
                     if(res.data.code == 1){
                         _this.isModal = true;
                         _this.isAdd = true;
+                        _this.addText = "已添加";
                     }
                 })
             }
